@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gH1-uJ-4y9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scores-->
+        <scene sceneID="gLT-hz-1hL">
+            <objects>
+                <viewController storyboardIdentifier="ScoresHostViewController" id="Aqy-q4-yZm" customClass="ScoresHostViewController" customModule="ReFoot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aGo-TH-Sqs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="lC7-UU-RsK">
+                                <rect key="frame" x="5" y="69" width="365" height="29"/>
+                                <segments>
+                                    <segment title=""/>
+                                    <segment title="Yesterday"/>
+                                    <segment title="Today"/>
+                                    <segment title="Tommorow"/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQr-l1-QcD">
+                                <rect key="frame" x="0.0" y="102" width="375" height="516"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KQr-l1-QcD" firstAttribute="top" secondItem="lC7-UU-RsK" secondAttribute="bottom" constant="5" id="53p-1N-b8z"/>
+                            <constraint firstItem="oGH-Ph-LQI" firstAttribute="bottom" secondItem="KQr-l1-QcD" secondAttribute="bottom" id="Erb-dN-1F8"/>
+                            <constraint firstItem="KQr-l1-QcD" firstAttribute="leading" secondItem="oGH-Ph-LQI" secondAttribute="leading" id="IBs-dS-eer"/>
+                            <constraint firstItem="lC7-UU-RsK" firstAttribute="top" secondItem="oGH-Ph-LQI" secondAttribute="top" constant="5" id="MMv-zd-GEU"/>
+                            <constraint firstItem="oGH-Ph-LQI" firstAttribute="trailing" secondItem="lC7-UU-RsK" secondAttribute="trailing" constant="5" id="ccz-H1-yJp"/>
+                            <constraint firstItem="oGH-Ph-LQI" firstAttribute="trailing" secondItem="KQr-l1-QcD" secondAttribute="trailing" id="dW5-4k-NN2"/>
+                            <constraint firstItem="lC7-UU-RsK" firstAttribute="leading" secondItem="oGH-Ph-LQI" secondAttribute="leading" constant="5" id="gEi-Nw-R0K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oGH-Ph-LQI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scores" id="2n0-Dc-ySL"/>
+                    <connections>
+                        <outlet property="containerView" destination="KQr-l1-QcD" id="hW8-11-lu5"/>
+                        <outlet property="dateSegmentedControl" destination="lC7-UU-RsK" id="hCu-9n-8pR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNZ-re-u1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="-262.21889055472263"/>
+        </scene>
+        <!--Scores-->
+        <scene sceneID="ZXf-Xa-CSv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gH1-uJ-4y9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Scores" image="clock" id="NC4-Gs-jG3"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1UL-DK-N7i">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Aqy-q4-yZm" kind="relationship" relationship="rootViewController" id="s0y-dc-GP6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vtc-ta-hZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-276" y="-262"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="clock" width="30" height="30"/>
+    </resources>
+</document>

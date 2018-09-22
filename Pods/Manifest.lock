@@ -1,0 +1,65 @@
+PODS:
+  - Alamofire (4.7.0)
+  - Differentiator (3.0.2)
+  - Kingfisher (4.6.3)
+  - Moya/Core (11.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (11.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - ObjectMapper (3.1.0)
+  - ReRxSwift (1.2.2):
+    - ReSwift (~> 4.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - Result (3.2.4)
+  - ReSwift (4.0.1)
+  - ReSwiftRouter (0.6.0):
+    - ReSwift (~> 4.0.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxCoreData (0.4.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxOptional (3.3.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+
+DEPENDENCIES:
+  - Kingfisher
+  - Moya/RxSwift (~> 11.0)
+  - ObjectMapper
+  - ReRxSwift (~> 1.0)
+  - ReSwift
+  - ReSwiftRouter
+  - RxCocoa
+  - RxCoreData
+  - RxDataSources (~> 3.0)
+  - RxOptional
+  - RxSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
+  Moya: 3d594ada51a21cc02b18739ab578a1984f900c8a
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  ReRxSwift: f442fb438094237a2918f9345709a31b2a64a9cd
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
+  ReSwiftRouter: 81f41b37a5dd1c88e1d3d10a660ff2dcc939ba7c
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxCoreData: 3717ff29afb7261f8cff4b893ffb0650367d0fe6
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxOptional: e5448d3e21024489e07c31f6a262f2b50c975367
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+
+PODFILE CHECKSUM: 09650be43e437a3dcc42234fd3426dd05b58ace4
+
+COCOAPODS: 1.4.0

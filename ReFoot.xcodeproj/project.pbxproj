@@ -1,0 +1,815 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F76802E3855412B70A7548C /* Pods_ReFoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372AE8403D17305C7433EFC7 /* Pods_ReFoot.framework */; };
+		3335D29721569E5300BC7D26 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D29621569E5300BC7D26 /* DateExt.swift */; };
+		3335D29A2156A33500BC7D26 /* DayEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D2992156A33500BC7D26 /* DayEventsViewController.swift */; };
+		3335D29C2156A5D000BC7D26 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D29B2156A5D000BC7D26 /* UIViewControllerExt.swift */; };
+		3335D29F2156A7CD00BC7D26 /* LivescoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D29E2156A7CD00BC7D26 /* LivescoresViewController.swift */; };
+		3335D2A42156B10500BC7D26 /* LeagueInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D2A32156B10500BC7D26 /* LeagueInfoViewController.swift */; };
+		3335D2A62156B11000BC7D26 /* LeagueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D2A52156B11000BC7D26 /* LeagueTableViewController.swift */; };
+		3335D2A82156B11B00BC7D26 /* LeagueTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D2A72156B11B00BC7D26 /* LeagueTeamsViewController.swift */; };
+		3335D2AA2156B14900BC7D26 /* LeagueInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2A92156B14900BC7D26 /* LeagueInfo.storyboard */; };
+		3335D2AC2156B16500BC7D26 /* LeagueTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2AB2156B16500BC7D26 /* LeagueTable.storyboard */; };
+		3335D2AE2156B17B00BC7D26 /* LeagueTeams.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2AD2156B17B00BC7D26 /* LeagueTeams.storyboard */; };
+		3335D2B02156B54E00BC7D26 /* DayEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2AF2156B54E00BC7D26 /* DayEvents.storyboard */; };
+		3335D2B22156B59200BC7D26 /* Livescores.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2B12156B59200BC7D26 /* Livescores.storyboard */; };
+		3335D2B52156BA8F00BC7D26 /* LeagueHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D2B42156BA8F00BC7D26 /* LeagueHostViewController.swift */; };
+		3335D2B72156BB0000BC7D26 /* LeagueHost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2B62156BB0000BC7D26 /* LeagueHost.storyboard */; };
+		3335D2B92156BCD600BC7D26 /* LeaguesList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2B82156BCD600BC7D26 /* LeaguesList.storyboard */; };
+		3335D2BB2156BE2F00BC7D26 /* ScoresHost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335D2BA2156BE2F00BC7D26 /* ScoresHost.storyboard */; };
+		3367A70C21567A84001A259F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367A70B21567A84001A259F /* AppDelegate.swift */; };
+		3367A71121567A84001A259F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367A70F21567A84001A259F /* Main.storyboard */; };
+		3367A71321567A84001A259F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367A71221567A84001A259F /* Assets.xcassets */; };
+		3367A71621567A84001A259F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367A71421567A84001A259F /* LaunchScreen.storyboard */; };
+		3367A72121567A84001A259F /* ReFootTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367A72021567A84001A259F /* ReFootTests.swift */; };
+		3367A72C21567A84001A259F /* ReFootUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367A72B21567A84001A259F /* ReFootUITests.swift */; };
+		338E009D21569161004A5390 /* ScoresHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E009C21569161004A5390 /* ScoresHostViewController.swift */; };
+		338E00A021569205004A5390 /* LeaguesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338E009F21569205004A5390 /* LeaguesListViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3367A71D21567A84001A259F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3367A70021567A83001A259F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3367A70721567A83001A259F;
+			remoteInfo = ReFoot;
+		};
+		3367A72821567A84001A259F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3367A70021567A83001A259F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3367A70721567A83001A259F;
+			remoteInfo = ReFoot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3335D29621569E5300BC7D26 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
+		3335D2992156A33500BC7D26 /* DayEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsViewController.swift; sourceTree = "<group>"; };
+		3335D29B2156A5D000BC7D26 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		3335D29E2156A7CD00BC7D26 /* LivescoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivescoresViewController.swift; sourceTree = "<group>"; };
+		3335D2A32156B10500BC7D26 /* LeagueInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueInfoViewController.swift; sourceTree = "<group>"; };
+		3335D2A52156B11000BC7D26 /* LeagueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewController.swift; sourceTree = "<group>"; };
+		3335D2A72156B11B00BC7D26 /* LeagueTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTeamsViewController.swift; sourceTree = "<group>"; };
+		3335D2A92156B14900BC7D26 /* LeagueInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeagueInfo.storyboard; sourceTree = "<group>"; };
+		3335D2AB2156B16500BC7D26 /* LeagueTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeagueTable.storyboard; sourceTree = "<group>"; };
+		3335D2AD2156B17B00BC7D26 /* LeagueTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeagueTeams.storyboard; sourceTree = "<group>"; };
+		3335D2AF2156B54E00BC7D26 /* DayEvents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DayEvents.storyboard; sourceTree = "<group>"; };
+		3335D2B12156B59200BC7D26 /* Livescores.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Livescores.storyboard; sourceTree = "<group>"; };
+		3335D2B42156BA8F00BC7D26 /* LeagueHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueHostViewController.swift; sourceTree = "<group>"; };
+		3335D2B62156BB0000BC7D26 /* LeagueHost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeagueHost.storyboard; sourceTree = "<group>"; };
+		3335D2B82156BCD600BC7D26 /* LeaguesList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaguesList.storyboard; sourceTree = "<group>"; };
+		3335D2BA2156BE2F00BC7D26 /* ScoresHost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScoresHost.storyboard; sourceTree = "<group>"; };
+		3367A70821567A83001A259F /* ReFoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3367A70B21567A84001A259F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3367A71021567A84001A259F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3367A71221567A84001A259F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3367A71521567A84001A259F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3367A71721567A84001A259F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3367A71C21567A84001A259F /* ReFootTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReFootTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3367A72021567A84001A259F /* ReFootTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReFootTests.swift; sourceTree = "<group>"; };
+		3367A72221567A84001A259F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3367A72721567A84001A259F /* ReFootUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReFootUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3367A72B21567A84001A259F /* ReFootUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReFootUITests.swift; sourceTree = "<group>"; };
+		3367A72D21567A84001A259F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		338E009C21569161004A5390 /* ScoresHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresHostViewController.swift; sourceTree = "<group>"; };
+		338E009F21569205004A5390 /* LeaguesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesListViewController.swift; sourceTree = "<group>"; };
+		372AE8403D17305C7433EFC7 /* Pods_ReFoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReFoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		905DA826E8A734ABE8509825 /* Pods-ReFoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReFoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot.release.xcconfig"; sourceTree = "<group>"; };
+		D811E2DF8EA4892ABB9DF217 /* Pods-ReFoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReFoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3367A70521567A83001A259F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F76802E3855412B70A7548C /* Pods_ReFoot.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3367A71921567A84001A259F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3367A72421567A84001A259F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3335D29521569E4600BC7D26 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3335D29621569E5300BC7D26 /* DateExt.swift */,
+				3335D29B2156A5D000BC7D26 /* UIViewControllerExt.swift */,
+			);
+			name = Utils;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		3335D2982156A29300BC7D26 /* DayEvents */ = {
+			isa = PBXGroup;
+			children = (
+				3335D2992156A33500BC7D26 /* DayEventsViewController.swift */,
+				3335D2AF2156B54E00BC7D26 /* DayEvents.storyboard */,
+			);
+			path = DayEvents;
+			sourceTree = "<group>";
+		};
+		3335D29D2156A79400BC7D26 /* Livescores */ = {
+			isa = PBXGroup;
+			children = (
+				3335D29E2156A7CD00BC7D26 /* LivescoresViewController.swift */,
+				3335D2B12156B59200BC7D26 /* Livescores.storyboard */,
+			);
+			path = Livescores;
+			sourceTree = "<group>";
+		};
+		3335D2A02156B0C200BC7D26 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				3335D2A72156B11B00BC7D26 /* LeagueTeamsViewController.swift */,
+				3335D2AD2156B17B00BC7D26 /* LeagueTeams.storyboard */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		3335D2A12156B0C700BC7D26 /* LeagueTable */ = {
+			isa = PBXGroup;
+			children = (
+				3335D2A52156B11000BC7D26 /* LeagueTableViewController.swift */,
+				3335D2AB2156B16500BC7D26 /* LeagueTable.storyboard */,
+			);
+			path = LeagueTable;
+			sourceTree = "<group>";
+		};
+		3335D2A22156B0DE00BC7D26 /* LeagueInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3335D2A32156B10500BC7D26 /* LeagueInfoViewController.swift */,
+				3335D2A92156B14900BC7D26 /* LeagueInfo.storyboard */,
+			);
+			path = LeagueInfo;
+			sourceTree = "<group>";
+		};
+		3335D2B32156BA5B00BC7D26 /* LeagueHost */ = {
+			isa = PBXGroup;
+			children = (
+				3335D2B42156BA8F00BC7D26 /* LeagueHostViewController.swift */,
+				3335D2B62156BB0000BC7D26 /* LeagueHost.storyboard */,
+			);
+			path = LeagueHost;
+			sourceTree = "<group>";
+		};
+		3367A6FF21567A83001A259F = {
+			isa = PBXGroup;
+			children = (
+				3367A70A21567A83001A259F /* ReFoot */,
+				3367A71F21567A84001A259F /* ReFootTests */,
+				3367A72A21567A84001A259F /* ReFootUITests */,
+				3367A70921567A83001A259F /* Products */,
+				B234C124F0970DF0AF7706CB /* Pods */,
+				F74E3670375100D8B730D644 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3367A70921567A83001A259F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3367A70821567A83001A259F /* ReFoot.app */,
+				3367A71C21567A84001A259F /* ReFootTests.xctest */,
+				3367A72721567A84001A259F /* ReFootUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3367A70A21567A83001A259F /* ReFoot */ = {
+			isa = PBXGroup;
+			children = (
+				3335D29521569E4600BC7D26 /* Utils */,
+				338E009A21569120004A5390 /* Scenes */,
+				3367A70B21567A84001A259F /* AppDelegate.swift */,
+				3367A70F21567A84001A259F /* Main.storyboard */,
+				3367A71221567A84001A259F /* Assets.xcassets */,
+				3367A71421567A84001A259F /* LaunchScreen.storyboard */,
+				3367A71721567A84001A259F /* Info.plist */,
+			);
+			path = ReFoot;
+			sourceTree = "<group>";
+		};
+		3367A71F21567A84001A259F /* ReFootTests */ = {
+			isa = PBXGroup;
+			children = (
+				3367A72021567A84001A259F /* ReFootTests.swift */,
+				3367A72221567A84001A259F /* Info.plist */,
+			);
+			path = ReFootTests;
+			sourceTree = "<group>";
+		};
+		3367A72A21567A84001A259F /* ReFootUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3367A72B21567A84001A259F /* ReFootUITests.swift */,
+				3367A72D21567A84001A259F /* Info.plist */,
+			);
+			path = ReFootUITests;
+			sourceTree = "<group>";
+		};
+		338E009A21569120004A5390 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3335D2B32156BA5B00BC7D26 /* LeagueHost */,
+				3335D2A22156B0DE00BC7D26 /* LeagueInfo */,
+				3335D2A12156B0C700BC7D26 /* LeagueTable */,
+				3335D2A02156B0C200BC7D26 /* Teams */,
+				3335D29D2156A79400BC7D26 /* Livescores */,
+				3335D2982156A29300BC7D26 /* DayEvents */,
+				338E009E2156917A004A5390 /* LeaguesList */,
+				338E009B21569128004A5390 /* ScoresHost */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		338E009B21569128004A5390 /* ScoresHost */ = {
+			isa = PBXGroup;
+			children = (
+				338E009C21569161004A5390 /* ScoresHostViewController.swift */,
+				3335D2BA2156BE2F00BC7D26 /* ScoresHost.storyboard */,
+			);
+			path = ScoresHost;
+			sourceTree = "<group>";
+		};
+		338E009E2156917A004A5390 /* LeaguesList */ = {
+			isa = PBXGroup;
+			children = (
+				338E009F21569205004A5390 /* LeaguesListViewController.swift */,
+				3335D2B82156BCD600BC7D26 /* LeaguesList.storyboard */,
+			);
+			path = LeaguesList;
+			sourceTree = "<group>";
+		};
+		B234C124F0970DF0AF7706CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D811E2DF8EA4892ABB9DF217 /* Pods-ReFoot.debug.xcconfig */,
+				905DA826E8A734ABE8509825 /* Pods-ReFoot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F74E3670375100D8B730D644 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				372AE8403D17305C7433EFC7 /* Pods_ReFoot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3367A70721567A83001A259F /* ReFoot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3367A73021567A84001A259F /* Build configuration list for PBXNativeTarget "ReFoot" */;
+			buildPhases = (
+				1DDE89D778B67614D8F218F0 /* [CP] Check Pods Manifest.lock */,
+				3367A70421567A83001A259F /* Sources */,
+				3367A70521567A83001A259F /* Frameworks */,
+				3367A70621567A83001A259F /* Resources */,
+				19327F3344F07FAFDB7A76F7 /* [CP] Embed Pods Frameworks */,
+				DD0F5625B592A0EF7EF5DEE0 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReFoot;
+			productName = ReFoot;
+			productReference = 3367A70821567A83001A259F /* ReFoot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3367A71B21567A84001A259F /* ReFootTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3367A73321567A84001A259F /* Build configuration list for PBXNativeTarget "ReFootTests" */;
+			buildPhases = (
+				3367A71821567A84001A259F /* Sources */,
+				3367A71921567A84001A259F /* Frameworks */,
+				3367A71A21567A84001A259F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3367A71E21567A84001A259F /* PBXTargetDependency */,
+			);
+			name = ReFootTests;
+			productName = ReFootTests;
+			productReference = 3367A71C21567A84001A259F /* ReFootTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3367A72621567A84001A259F /* ReFootUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3367A73621567A84001A259F /* Build configuration list for PBXNativeTarget "ReFootUITests" */;
+			buildPhases = (
+				3367A72321567A84001A259F /* Sources */,
+				3367A72421567A84001A259F /* Frameworks */,
+				3367A72521567A84001A259F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3367A72921567A84001A259F /* PBXTargetDependency */,
+			);
+			name = ReFootUITests;
+			productName = ReFootUITests;
+			productReference = 3367A72721567A84001A259F /* ReFootUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3367A70021567A83001A259F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = merengue;
+				TargetAttributes = {
+					3367A70721567A83001A259F = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					3367A71B21567A84001A259F = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3367A70721567A83001A259F;
+					};
+					3367A72621567A84001A259F = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3367A70721567A83001A259F;
+					};
+				};
+			};
+			buildConfigurationList = 3367A70321567A83001A259F /* Build configuration list for PBXProject "ReFoot" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3367A6FF21567A83001A259F;
+			productRefGroup = 3367A70921567A83001A259F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3367A70721567A83001A259F /* ReFoot */,
+				3367A71B21567A84001A259F /* ReFootTests */,
+				3367A72621567A84001A259F /* ReFootUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3367A70621567A83001A259F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3367A71621567A84001A259F /* LaunchScreen.storyboard in Resources */,
+				3335D2B92156BCD600BC7D26 /* LeaguesList.storyboard in Resources */,
+				3367A71321567A84001A259F /* Assets.xcassets in Resources */,
+				3335D2AE2156B17B00BC7D26 /* LeagueTeams.storyboard in Resources */,
+				3335D2B22156B59200BC7D26 /* Livescores.storyboard in Resources */,
+				3367A71121567A84001A259F /* Main.storyboard in Resources */,
+				3335D2BB2156BE2F00BC7D26 /* ScoresHost.storyboard in Resources */,
+				3335D2B02156B54E00BC7D26 /* DayEvents.storyboard in Resources */,
+				3335D2AC2156B16500BC7D26 /* LeagueTable.storyboard in Resources */,
+				3335D2AA2156B14900BC7D26 /* LeagueInfo.storyboard in Resources */,
+				3335D2B72156BB0000BC7D26 /* LeagueHost.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3367A71A21567A84001A259F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3367A72521567A84001A259F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19327F3344F07FAFDB7A76F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReRxSwift/ReRxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwiftRouter/ReSwiftRouter.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReRxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwiftRouter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1DDE89D778B67614D8F218F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReFoot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD0F5625B592A0EF7EF5DEE0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3367A70421567A83001A259F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				338E009D21569161004A5390 /* ScoresHostViewController.swift in Sources */,
+				3335D2B52156BA8F00BC7D26 /* LeagueHostViewController.swift in Sources */,
+				3367A70C21567A84001A259F /* AppDelegate.swift in Sources */,
+				3335D29C2156A5D000BC7D26 /* UIViewControllerExt.swift in Sources */,
+				338E00A021569205004A5390 /* LeaguesListViewController.swift in Sources */,
+				3335D2A62156B11000BC7D26 /* LeagueTableViewController.swift in Sources */,
+				3335D29F2156A7CD00BC7D26 /* LivescoresViewController.swift in Sources */,
+				3335D29A2156A33500BC7D26 /* DayEventsViewController.swift in Sources */,
+				3335D29721569E5300BC7D26 /* DateExt.swift in Sources */,
+				3335D2A82156B11B00BC7D26 /* LeagueTeamsViewController.swift in Sources */,
+				3335D2A42156B10500BC7D26 /* LeagueInfoViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3367A71821567A84001A259F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3367A72121567A84001A259F /* ReFootTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3367A72321567A84001A259F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3367A72C21567A84001A259F /* ReFootUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3367A71E21567A84001A259F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3367A70721567A83001A259F /* ReFoot */;
+			targetProxy = 3367A71D21567A84001A259F /* PBXContainerItemProxy */;
+		};
+		3367A72921567A84001A259F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3367A70721567A83001A259F /* ReFoot */;
+			targetProxy = 3367A72821567A84001A259F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3367A70F21567A84001A259F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3367A71021567A84001A259F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3367A71421567A84001A259F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3367A71521567A84001A259F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3367A72E21567A84001A259F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3367A72F21567A84001A259F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3367A73121567A84001A259F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D811E2DF8EA4892ABB9DF217 /* Pods-ReFoot.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReFoot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = merengue.ReFoot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3367A73221567A84001A259F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 905DA826E8A734ABE8509825 /* Pods-ReFoot.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReFoot/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = merengue.ReFoot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3367A73421567A84001A259F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReFootTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = merengue.ReFootTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReFoot.app/ReFoot";
+			};
+			name = Debug;
+		};
+		3367A73521567A84001A259F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReFootTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = merengue.ReFootTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReFoot.app/ReFoot";
+			};
+			name = Release;
+		};
+		3367A73721567A84001A259F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReFootUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = merengue.ReFootUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReFoot;
+			};
+			name = Debug;
+		};
+		3367A73821567A84001A259F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReFootUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = merengue.ReFootUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReFoot;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3367A70321567A83001A259F /* Build configuration list for PBXProject "ReFoot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3367A72E21567A84001A259F /* Debug */,
+				3367A72F21567A84001A259F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3367A73021567A84001A259F /* Build configuration list for PBXNativeTarget "ReFoot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3367A73121567A84001A259F /* Debug */,
+				3367A73221567A84001A259F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3367A73321567A84001A259F /* Build configuration list for PBXNativeTarget "ReFootTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3367A73421567A84001A259F /* Debug */,
+				3367A73521567A84001A259F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3367A73621567A84001A259F /* Build configuration list for PBXNativeTarget "ReFootUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3367A73721567A84001A259F /* Debug */,
+				3367A73821567A84001A259F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3367A70021567A83001A259F /* Project object */;
+}

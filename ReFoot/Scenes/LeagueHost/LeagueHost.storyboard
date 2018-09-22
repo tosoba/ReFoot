@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K68-jS-n8d">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--League Host View Controller-->
+        <scene sceneID="DcQ-8T-V2u">
+            <objects>
+                <viewController storyboardIdentifier="LeagueHostViewController" id="K68-jS-n8d" customClass="LeagueHostViewController" customModule="ReFoot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sqM-A8-oYg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YKi-p1-F15">
+                                <rect key="frame" x="5" y="25" width="365" height="29"/>
+                                <segments>
+                                    <segment title="Table"/>
+                                    <segment title="Teams"/>
+                                    <segment title="Details"/>
+                                </segments>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njd-ou-S0v">
+                                <rect key="frame" x="0.0" y="58" width="375" height="609"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l2V-Xc-vWv" firstAttribute="trailing" secondItem="YKi-p1-F15" secondAttribute="trailing" constant="5" id="2pV-Zv-JOa"/>
+                            <constraint firstItem="Njd-ou-S0v" firstAttribute="top" secondItem="YKi-p1-F15" secondAttribute="bottom" constant="5" id="BOn-Nl-24x"/>
+                            <constraint firstAttribute="bottom" secondItem="Njd-ou-S0v" secondAttribute="bottom" id="OOu-pe-fAd"/>
+                            <constraint firstItem="YKi-p1-F15" firstAttribute="top" secondItem="l2V-Xc-vWv" secondAttribute="top" constant="5" id="hi8-Lp-fHJ"/>
+                            <constraint firstItem="Njd-ou-S0v" firstAttribute="trailing" secondItem="l2V-Xc-vWv" secondAttribute="trailing" id="qDg-As-RHn"/>
+                            <constraint firstItem="YKi-p1-F15" firstAttribute="leading" secondItem="l2V-Xc-vWv" secondAttribute="leading" constant="5" id="tef-LQ-PRN"/>
+                            <constraint firstItem="Njd-ou-S0v" firstAttribute="leading" secondItem="l2V-Xc-vWv" secondAttribute="leading" id="zie-ew-JWS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l2V-Xc-vWv"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="Njd-ou-S0v" id="iYZ-FV-jVX"/>
+                        <outlet property="leagueChildSegmentedControl" destination="YKi-p1-F15" id="9Kl-25-1mS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yYs-Gs-LpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-210" y="92"/>
+        </scene>
+    </scenes>
+</document>
