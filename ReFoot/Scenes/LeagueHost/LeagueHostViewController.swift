@@ -17,21 +17,24 @@ final class LeagueHostViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    private lazy var leagueTableViewController: LeagueTableViewController = instantiateViewController(withIdentifier: LeagueTableViewController.identifier, from: UIStoryboard(name: "LeagueTable", bundle: Bundle.main))
+    private lazy var leagueTableViewController: LeagueTableViewController = instantiateViewController(withIdentifier: LeagueTableViewController.identifier, fromSwinjectStoryboardNamed: "LeagueTable")
     
-    private lazy var leagueTeamsViewController: LeagueTeamsViewController = instantiateViewController(withIdentifier: LeagueTeamsViewController.identifier, from: UIStoryboard(name: "LeagueTeams", bundle: Bundle.main))
+    private lazy var leagueTeamsViewController: LeagueTeamsViewController = instantiateViewController(withIdentifier: LeagueTeamsViewController.identifier, fromSwinjectStoryboardNamed: "LeagueTeams")
     
-    private lazy var leagueInfoViewController: LeagueInfoViewController = instantiateViewController(withIdentifier: LeagueInfoViewController.identifier, from: UIStoryboard(name: "LeagueInfo", bundle: Bundle.main))
+    private lazy var leagueInfoViewController: LeagueInfoViewController = instantiateViewController(withIdentifier: LeagueInfoViewController.identifier, fromSwinjectStoryboardNamed: "LeagueInfo")
     
     private var currentChildViewController: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        leagueChildSegmentedControl.rx.value.subscribe { [weak self] event in
-            guard let strongSelf = self, let index = event.element else { return }
-            strongSelf.childSelectionDidChange(toIndex: index)
-        }.disposed(by: disposeBag)
+        leagueChildSegmentedControl.rx.value
+            .distinctUntilChanged()
+            .subscribe { [weak self] event in
+                guard case let .next(index) = event, let this = self else { return }
+                this.childSelectionDidChange(toIndex: index)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func childSelectionDidChange(toIndex index: Int) {

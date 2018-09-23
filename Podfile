@@ -5,8 +5,9 @@ target 'ReFoot' do
   # ignore all warnings from all pods
   inhibit_all_warnings!
 
-  # Networking
-  pod 'Moya/RxSwift', '~> 11.0'
+  # DI
+  pod 'Swinject'
+  pod 'SwinjectStoryboard'
 
   # Data
   pod 'Kingfisher'
@@ -23,6 +24,7 @@ target 'ReFoot' do
   pod 'RxOptional'
   pod 'RxDataSources', '~> 3.0'
   pod "RxCoreData"
+  pod 'RxAlamofire'
 
 end
 

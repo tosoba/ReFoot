@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import Swinject
+import SwinjectStoryboard
+import ReSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.makeKeyAndVisible()
+        self.window = window
+        
+        setupDependencies()
+        
+        let storyboard = SwinjectStoryboard.create(name: "Main", bundle: nil, container: SwinjectStoryboard.defaultContainer)
+        window.rootViewController = storyboard.instantiateInitialViewController()
+
+        
+        
         return true
     }
 
@@ -40,7 +52,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    private func setupDependencies() {
+        Container.loggingFunction = nil
+        
+        // repo
+        SwinjectStoryboard.defaultContainer.register(CacheFootballDataStore.self) { _ in
+            CacheFootballDataStoreImpl()
+        }
+        
+        SwinjectStoryboard.defaultContainer.register(RemoteFootballDataStore.self) { _ in
+            RemoteFootballDataStoreImpl()
+        }
+        
+        SwinjectStoryboard.defaultContainer.register(FootballRepository.self) { resolver in
+            FootballRepositoryImpl(remote: resolver.resolve(RemoteFootballDataStore.self)!, cache: resolver.resolve(CacheFootballDataStore.self)!)
+        }
+        
+        // store
+        SwinjectStoryboard.defaultContainer.register(Store<AppState>.self) { resolver in
+            Store<AppState>(
+                reducer: appReducer,
+                state: nil,
+                middleware: [
+                    createMiddleware(leaguesListMiddleware(repository: resolver.resolve(FootballRepository.self)!))
+                ]
+            )
+        }
+        
+        // viewControllers
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LivescoresViewController.self) { resolver, viewController in
+        }
+        
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(DayEventsViewController.self) { resolver, viewController in
+        }
+        
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LeaguesListViewController.self) { resolver, viewController in
+            viewController.store = resolver.resolve(Store<AppState>.self)!
+        }
+        
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LeagueInfoViewController.self) { resolver, viewController in
+        }
+        
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LeagueTableViewController.self) { resolver, viewController in
+        }
+        
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LeagueTeamsViewController.self) { resolver, viewController in
+        }
+    }
 }
 

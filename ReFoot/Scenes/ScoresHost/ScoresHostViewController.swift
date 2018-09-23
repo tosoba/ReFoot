@@ -17,9 +17,9 @@ final class ScoresHostViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    private lazy var dayEventsViewController: DayEventsViewController = instantiateViewController(withIdentifier: DayEventsViewController.identifier, from: UIStoryboard(name: "DayEvents", bundle: Bundle.main))
+    private lazy var dayEventsViewController: DayEventsViewController = instantiateViewController(withIdentifier: DayEventsViewController.identifier, fromSwinjectStoryboardNamed: "DayEvents")
     
-    private lazy var livescoresViewController: LivescoresViewController = instantiateViewController(withIdentifier: LivescoresViewController.identifier, from: UIStoryboard(name: "Livescores", bundle: Bundle.main))
+    private lazy var livescoresViewController: LivescoresViewController = instantiateViewController(withIdentifier: LivescoresViewController.identifier, fromSwinjectStoryboardNamed: "Livescores")
     
     private var currentChildViewController: UIViewController?
     
@@ -28,11 +28,14 @@ final class ScoresHostViewController: UIViewController {
         
         setupDateSegmentedControl()
         
-        dateSegmentedControl.rx.value.subscribe { [weak self] event in
-            guard let strongSelf = self, let index = event.element else { return }
-            //TODO: dispatch action to change date for loading events
-            strongSelf.dateSelectionDidChange(toIndex: index)
-        }.disposed(by: disposeBag)
+        dateSegmentedControl.rx.value
+            .distinctUntilChanged()
+            .subscribe { [weak self] event in
+                guard case let .next(index) = event, let this = self else { return }
+                //TODO: dispatch action to change date for loading events
+                this.dateSelectionDidChange(toIndex: index)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func dateSelectionDidChange(toIndex index: Int) {

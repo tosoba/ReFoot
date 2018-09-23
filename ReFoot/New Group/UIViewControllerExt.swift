@@ -41,10 +41,3 @@ extension UIViewController {
         currentChildViewController = viewController
     }
 }
-
-func instantiateViewController<T>(
-    withIdentifier identifier: String,
-    from storyboard: UIStoryboard
-) -> T where T : UIViewController {
-    return storyboard.instantiateViewController(withIdentifier: identifier) as! T
-}
