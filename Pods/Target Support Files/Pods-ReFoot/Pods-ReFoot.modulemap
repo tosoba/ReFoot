@@ -1,6 +1,0 @@
-framework module Pods_ReFoot {
-  umbrella header "Pods-ReFoot-umbrella.h"
-
-  export *
-  module * { export * }
-}
