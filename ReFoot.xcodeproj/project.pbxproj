@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F76802E3855412B70A7548C /* Pods_ReFoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372AE8403D17305C7433EFC7 /* Pods_ReFoot.framework */; };
+		3306452B2157FD90003E7FD7 /* EquatableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306452A2157FD90003E7FD7 /* EquatableArray.swift */; };
 		3335D29721569E5300BC7D26 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D29621569E5300BC7D26 /* DateExt.swift */; };
 		3335D29A2156A33500BC7D26 /* DayEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D2992156A33500BC7D26 /* DayEventsViewController.swift */; };
 		3335D29C2156A5D000BC7D26 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D29B2156A5D000BC7D26 /* UIViewControllerExt.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3306452A2157FD90003E7FD7 /* EquatableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableArray.swift; sourceTree = "<group>"; };
 		3335D29621569E5300BC7D26 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		3335D2992156A33500BC7D26 /* DayEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsViewController.swift; sourceTree = "<group>"; };
 		3335D29B2156A5D000BC7D26 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				337B4D012157BA44006A2665 /* Loadable.swift */,
 				337B4CFF2157B98C006A2665 /* Middleware.swift */,
+				3306452A2157FD90003E7FD7 /* EquatableArray.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				3335D2A82156B11B00BC7D26 /* LeagueTeamsViewController.swift in Sources */,
 				339A25F52157A3120021B1BA /* FootballRepository.swift in Sources */,
 				337B4D172157E13F006A2665 /* AppReducer.swift in Sources */,
+				3306452B2157FD90003E7FD7 /* EquatableArray.swift in Sources */,
 				337B4D122157C515006A2665 /* LeaguesListMiddleware.swift in Sources */,
 				3335D2A42156B10500BC7D26 /* LeagueInfoViewController.swift in Sources */,
 				337B4D0B2157BC8D006A2665 /* League.swift in Sources */,

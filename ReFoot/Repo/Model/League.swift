@@ -46,3 +46,9 @@ struct League: ImmutableMappable {
         trophy = try? map.value("strTrophy")
     }
 }
+
+extension League: Equatable {
+    static func ==(lhs: League, rhs: League) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

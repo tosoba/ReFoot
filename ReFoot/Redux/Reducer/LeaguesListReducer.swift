@@ -9,5 +9,17 @@
 import ReSwift
 
 func leaguesListReducer(action: Action, state: LeaguesListState?) -> LeaguesListState {
-    return state ?? initialLeaguesState
+    var currentState = state ?? initialLeaguesState
+    guard let leaguesListAction = action as? LeaguesListAction else {
+        return currentState
+    }
+    
+    switch leaguesListAction {
+    case .set(let loadable):
+        currentState.leagues = loadable
+    default:
+        break
+    }
+    
+    return currentState
 }

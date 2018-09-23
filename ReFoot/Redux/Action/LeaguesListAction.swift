@@ -10,5 +10,5 @@ import ReSwift
 
 enum LeaguesListAction: Action {
     case fetch
-    case set(Loadable<[League]>)
+    case set(Loadable<EquatableArray<League>>)
 }

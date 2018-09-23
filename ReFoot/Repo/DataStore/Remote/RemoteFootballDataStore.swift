@@ -9,21 +9,34 @@
 import Foundation
 import RxAlamofire
 import RxSwift
+import ObjectMapper
 
 protocol RemoteFootballDataStore {
-     func getLeagues(_ onSuccess: ([League]) -> Void, onError: () -> Void)
+     func getLeagues(thenOnSuccess onSuccess: @escaping ([League]) -> Void, orOnError onError: @escaping (Error) -> Void)
 }
 
 final class RemoteFootballDataStoreImpl : RemoteFootballDataStore {
     
     private let disposeBag = DisposeBag()
     
-    func getLeagues(_ onSuccess: ([League]) -> Void, onError: () -> Void) {
+    func getLeagues(thenOnSuccess onSuccess: @escaping ([League]) -> Void, orOnError onError: @escaping (Error) -> Void) {
         URLSession.shared.rx
             .json(url: URLs.allLeagues)
             .observeOn(MainScheduler.instance)
-            .subscribe {
-                print($0)
+            .subscribe { event in
+                switch event {
+                case .next:
+                    guard let json = event.element as? [String: Any], let leaguesJson = json["countrys"] as? [[String: Any]] else { return }
+                    let leagues: [League] = leaguesJson.map { leagueJson in
+                        let map = Map(mappingType: .fromJSON, JSON: leagueJson)
+                        return try! League(map: map)
+                    }
+                    onSuccess(leagues)
+                case .error(let error):
+                    onError(error)
+                default:
+                    break
+                }
             }
             .disposed(by: disposeBag)
     }

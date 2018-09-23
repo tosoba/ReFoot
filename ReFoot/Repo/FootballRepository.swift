@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FootballRepository {
-    func getLeagues(_ onSuccess: ([League]) -> Void, onError: () -> Void)
+    func getLeagues(thenOnSuccess onSuccess: @escaping ([League]) -> Void, orOnError onError: @escaping (Error) -> Void)
 }
 
 final class FootballRepositoryImpl : FootballRepository {
@@ -22,7 +22,7 @@ final class FootballRepositoryImpl : FootballRepository {
         self.cache = cache
     }
     
-    func getLeagues(_ onSuccess: ([League]) -> Void, onError: () -> Void) {
-        remote.getLeagues(onSuccess, onError: onError)
+    func getLeagues(thenOnSuccess onSuccess: @escaping ([League]) -> Void, orOnError onError: @escaping (Error) -> Void) {
+        remote.getLeagues(thenOnSuccess: onSuccess, orOnError: onError)
     }
 }

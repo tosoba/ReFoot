@@ -11,20 +11,22 @@ import ReSwift
 import RxSwift
 import ReRxSwift
 
-class LeaguesListViewController: UIViewController {
+final class LeaguesListViewController: UIViewController {
     
     var store: Store<AppState>!
     
-    internal lazy var connection = {return Connection(
+    internal lazy var connection = Connection(
         store: store,
         mapStateToProps: mapStateToProps,
         mapDispatchToActions: mapDispatchToActions
-        )}()
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        connection.subscribe(\Props.leagues) {
+            print($0)
+        }
         actions.fetchLeagues()
     }
     
@@ -47,7 +49,7 @@ extension LeaguesListViewController: Connectable {
     typealias ActionsType = LeaguesListViewController.Actions
     
     struct Props {
-        let leagues: Loadable<[League]>
+        let leagues: Loadable<EquatableArray<League>>
     }
     struct Actions {
         let fetchLeagues: () -> ()
