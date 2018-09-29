@@ -1,5 +1,5 @@
 //
-//  LoadingState.swift
+//  LoadingStatus.swift
 //  ReFoot
 //
 //  Created by merengue on 29/09/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum LoadingState {
+enum LoadingStatus {
     case idle
     case loading
     case error(Error)

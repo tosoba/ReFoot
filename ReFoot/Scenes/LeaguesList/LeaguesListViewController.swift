@@ -16,7 +16,7 @@ final class LeaguesListViewController: UITableViewController {
     
     var store: Store<AppState>!
     
-    private let leagueSections = Variable<[LeagueSection]>([LeagueSection(title: "Default", leagues: [])])
+    private let leagueSections = Variable<[LeaguesListTableViewSection]>([LeaguesListTableViewSection(title: "Default", leagues: [])])
     
     private let disposeBag = DisposeBag()
     
@@ -63,7 +63,7 @@ final class LeaguesListViewController: UITableViewController {
     private func setupTableView() {
         tableView.dataSource = nil
         
-        let dataSource = RxTableViewSectionedAnimatedDataSource<LeagueSection>(configureCell: { (dataSource, tableView, indexPath, item) in
+        let dataSource = RxTableViewSectionedAnimatedDataSource<LeaguesListTableViewSection>(configureCell: { (dataSource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: LeaguesListTableViewCell.identifier, for: indexPath) as! LeaguesListTableViewCell
             cell.leagueNameLabel.text = item.name
             cell.badgeURL = item.badge ?? item.logo
