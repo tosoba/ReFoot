@@ -51,6 +51,8 @@
 		339D8B752157AA0300569BC0 /* CacheFootballDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D8B742157AA0300569BC0 /* CacheFootballDataStore.swift */; };
 		339D8B772157B10700569BC0 /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D8B762157B10700569BC0 /* GlobalUtils.swift */; };
 		33AD3183215FB77C00E2A0A9 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD3182215FB77C00E2A0A9 /* Segues.swift */; };
+		33B76C9D215FD577008A1026 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B76C9C215FD577008A1026 /* Persistable.swift */; };
+		33B76C9F215FDA3E008A1026 /* CacheTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B76C9E215FDA3E008A1026 /* CacheTimes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		339D8B742157AA0300569BC0 /* CacheFootballDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFootballDataStore.swift; sourceTree = "<group>"; };
 		339D8B762157B10700569BC0 /* GlobalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
 		33AD3182215FB77C00E2A0A9 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		33B76C9C215FD577008A1026 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
+		33B76C9E215FDA3E008A1026 /* CacheTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimes.swift; sourceTree = "<group>"; };
 		372AE8403D17305C7433EFC7 /* Pods_ReFoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReFoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		905DA826E8A734ABE8509825 /* Pods-ReFoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReFoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot.release.xcconfig"; sourceTree = "<group>"; };
 		D811E2DF8EA4892ABB9DF217 /* Pods-ReFoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReFoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 			children = (
 				337B4D0A2157BC8D006A2665 /* League.swift */,
 				337B4D0C2157BE07006A2665 /* Placeholders.swift */,
+				33B76C9C215FD577008A1026 /* Persistable.swift */,
+				33B76C9E215FDA3E008A1026 /* CacheTimes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,26 +357,10 @@
 		339A25F62157A4E40021B1BA /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
-				339A25F82157A50D0021B1BA /* Cache */,
-				339A25F72157A5030021B1BA /* Remote */,
-			);
-			path = DataStore;
-			sourceTree = "<group>";
-		};
-		339A25F72157A5030021B1BA /* Remote */ = {
-			isa = PBXGroup;
-			children = (
+				339D8B742157AA0300569BC0 /* CacheFootballDataStore.swift */,
 				339D8B722157A9D200569BC0 /* RemoteFootballDataStore.swift */,
 			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
-		339A25F82157A50D0021B1BA /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				339D8B742157AA0300569BC0 /* CacheFootballDataStore.swift */,
-			);
-			path = Cache;
+			path = DataStore;
 			sourceTree = "<group>";
 		};
 		33AD3184215FBC0E00E2A0A9 /* LeaguesList */ = {
@@ -565,11 +555,14 @@
 				"${BUILT_PRODUCTS_DIR}/ReRxSwift/ReRxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwiftRouter/ReSwiftRouter.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
@@ -583,11 +576,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReRxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwiftRouter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
@@ -650,6 +646,8 @@
 				3335D29F2156A7CD00BC7D26 /* LivescoresViewController.swift in Sources */,
 				337B4D082157BB51006A2665 /* LeaguesListState.swift in Sources */,
 				3335D29A2156A33500BC7D26 /* DayEventsViewController.swift in Sources */,
+				33B76C9F215FDA3E008A1026 /* CacheTimes.swift in Sources */,
+				33B76C9D215FD577008A1026 /* Persistable.swift in Sources */,
 				337B4D0D2157BE07006A2665 /* Placeholders.swift in Sources */,
 				337B4D102157C453006A2665 /* LeaguesListAction.swift in Sources */,
 				337B4D022157BA44006A2665 /* Loadable.swift in Sources */,

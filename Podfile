@@ -12,11 +12,13 @@ target 'ReFoot' do
   # Data
   pod 'Kingfisher'
   pod 'ObjectMapper'
+  pod 'RealmSwift'
 
   # Redux
   pod 'ReSwift'
   pod 'ReSwiftRouter'
   pod 'ReRxSwift', '~> 1.0'
+  pod 'RxRealm'
   
   # Rx
   pod 'RxSwift'

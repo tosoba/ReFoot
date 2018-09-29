@@ -9,6 +9,7 @@
 import Foundation
 import ObjectMapper
 import RxDataSources
+import RealmSwift
 
 struct League: ImmutableMappable {
     let id: String
@@ -58,4 +59,62 @@ extension League: IdentifiableType {
     typealias Identity = String
     
     var identity: String { return id }
+}
+
+extension League: Persistable {
+    typealias ManagedObject = PersistableLeague
+    
+    init(managedObject: ManagedObject) {
+        id = managedObject.id
+        name = managedObject.name
+        country = managedObject.country
+        websiteURL = managedObject.websiteURL
+        facebookURL = managedObject.facebookURL
+        twitterURL = managedObject.twitterURL
+        description = managedObject.description
+        fanarts = Array(managedObject.fanarts)
+        banner = managedObject.banner
+        badge = managedObject.badge
+        logo = managedObject.logo
+        poster = managedObject.poster
+        trophy = managedObject.trophy
+    }
+    
+    func managedObject() -> ManagedObject {
+        let persistable = PersistableLeague()
+        persistable.id = id
+        persistable.name = name
+        persistable.country = country
+        persistable.websiteURL = websiteURL
+        persistable.facebookURL = facebookURL
+        persistable.twitterURL = twitterURL
+        persistable.leagueDescription = description
+        persistable.fanarts.append(objectsIn: fanarts)
+        persistable.banner = banner
+        persistable.badge = badge
+        persistable.logo = logo
+        persistable.poster = poster
+        persistable.trophy = trophy
+        return persistable
+    }
+}
+
+final class PersistableLeague: Object {
+    @objc dynamic var id = ""
+    @objc dynamic var name = ""
+    @objc dynamic var country: String? = nil
+    @objc dynamic var websiteURL: String? = nil
+    @objc dynamic var facebookURL: String? = nil
+    @objc dynamic var twitterURL: String? = nil
+    @objc dynamic var leagueDescription = ""
+    var fanarts = List<String>()
+    @objc dynamic var banner: String? = nil
+    @objc dynamic var badge: String? = nil
+    @objc dynamic var logo: String? = nil
+    @objc dynamic var poster: String? = nil
+    @objc dynamic var trophy: String? = nil
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
