@@ -8,15 +8,15 @@
 
 import Foundation
 
-class EquatableArray<T: Equatable>: Equatable {
+final class EquatableArray<T: Equatable>: Equatable {
     
-    let result: [T]
+    let data: [T]
     
-    init(result: [T]) {
-        self.result = result
+    init(data: [T]) {
+        self.data = data
     }
     
     static func ==(lhs: EquatableArray<T>, rhs: EquatableArray<T>) -> Bool {
-        return lhs == rhs
+        return lhs.data == rhs.data
     }
 }

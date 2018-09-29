@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import RxDataSources
 
 struct League: ImmutableMappable {
     let id: String
@@ -51,4 +52,10 @@ extension League: Equatable {
     static func ==(lhs: League, rhs: League) -> Bool {
         return lhs.id == rhs.id
     }
+}
+
+extension League: IdentifiableType {
+    typealias Identity = String
+    
+    var identity: String { return id }
 }

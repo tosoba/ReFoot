@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 
 struct LeaguesListState: StateType {
-    var leagues: Loadable<EquatableArray<League>>
+    var leaguesLoadable: Loadable<EquatableArray<League>>
 }
 
-let initialLeaguesState = LeaguesListState(leagues: .initial)
+let initialLeaguesState = LeaguesListState(leaguesLoadable: .initial)

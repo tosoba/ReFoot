@@ -20,7 +20,7 @@ private func fetchLeagues(action: Action, context: MiddlewareContext<AppState>, 
     context.dispatch(LeaguesListAction.set(Loadable.loading))
     
     repository.getLeagues(thenOnSuccess: { leagues in
-        context.dispatch(LeaguesListAction.set(Loadable.value(EquatableArray(result: leagues))))
+        context.dispatch(LeaguesListAction.set(Loadable.value(EquatableArray(data: leagues))))
     }, orOnError: { error in
         context.dispatch(LeaguesListAction.set(Loadable.error(error)))
     })

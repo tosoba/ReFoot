@@ -25,6 +25,6 @@ target 'ReFoot' do
   pod 'RxDataSources', '~> 3.0'
   pod "RxCoreData"
   pod 'RxAlamofire'
-
+  
 end
 
