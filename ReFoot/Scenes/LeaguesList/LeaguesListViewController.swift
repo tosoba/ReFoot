@@ -26,6 +26,10 @@ final class LeaguesListViewController: UITableViewController {
         mapDispatchToActions: mapDispatchToActions
     )
     
+    private lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading leagues")
+    
+    private var loadingViewControllerShowing: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,9 +55,17 @@ final class LeaguesListViewController: UITableViewController {
     
     private func setupConnection() {
         connection.subscribe(\Props.leaguesLoadable) { [weak self] (loadable) in
+            guard let this = self else { return }
             switch loadable {
             case .value(let newLeagues):
-                self?.leagueSections.value[0].leagues.append(contentsOf: newLeagues.data)
+                this.leagueSections.value[0].leagues.append(contentsOf: newLeagues.data)
+                if this.loadingViewControllerShowing {
+                    this.dismiss(animated: true, completion: nil)
+                    this.loadingViewControllerShowing = false
+                }
+            case .loading:
+                this.present(this.loadingViewController, animated: true, completion: nil)
+                this.loadingViewControllerShowing = true
             default:
                 break
             }

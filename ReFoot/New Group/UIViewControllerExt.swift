@@ -40,4 +40,17 @@ extension UIViewController {
         add(childViewController: viewController, to: containerView)
         currentChildViewController = viewController
     }
+    
+    func loadingViewController(withTitle title: String, andMessage message: String? = nil) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let indicator = UIActivityIndicatorView(frame: alert.view.bounds)
+        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        alert.view.addSubview(indicator)
+        indicator.isUserInteractionEnabled = false
+        indicator.startAnimating()
+        
+        return alert
+    }
 }
