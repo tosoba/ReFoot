@@ -9,5 +9,9 @@
 import ReSwift
 
 func appReducer(action: Action, state: AppState?) -> AppState {
-    return AppState(leaguesListState: leaguesListReducer(action: action, state: state?.leaguesListState))
+    return AppState(
+        leaguesListState: leaguesListReducer(action: action, state: state?.leaguesListState),
+        dayEventsState: dayEventsReducer(action: action, state: state?.dayEventsState),
+        scoresHostState: scoresHostReducer(action: action, state: state?.scoresHostState)
+    )
 }

@@ -8,9 +8,7 @@
 
 import ReSwift
 
-typealias LeaguesListMiddleware = SimpleMiddleware<AppState>
-
-func leaguesListMiddleware(using repository: FootballRepository) -> LeaguesListMiddleware {
+func leaguesListMiddleware(using repository: FootballRepository) -> SimpleMiddleware<AppState> {
     return { fetchLeagues(action: $0, context: $1, repository: repository) }
 }
 

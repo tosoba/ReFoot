@@ -9,4 +9,5 @@
 import Foundation
 
 let nullId = "NULL"
-let placeholderName = "Unknown"
+let unknown = "Unknown"
+let unknownScore = "?"

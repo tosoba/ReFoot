@@ -109,6 +109,6 @@ private let mapStateToProps = { (appState: AppState) in
 
 private let mapDispatchToActions = { (dispatch: @escaping DispatchFunction) in
     return LeaguesListViewController.Actions(
-        fetchLeagues: {  dispatch(LeaguesListAction.fetch) }
+        fetchLeagues: { dispatch(LeaguesListAction.fetch) }
     )
 }

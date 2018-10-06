@@ -9,11 +9,21 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import ReSwift
+import ReRxSwift
 
 final class ScoresHostViewController: UIViewController {
     
     @IBOutlet weak var dateSegmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
+    
+    var store: Store<AppState>!
+    
+    internal lazy var connection = Connection(
+        store: store,
+        mapStateToProps: mapStateToProps,
+        mapDispatchToActions: mapDispatchToActions
+    )
     
     private let disposeBag = DisposeBag()
     
@@ -32,7 +42,6 @@ final class ScoresHostViewController: UIViewController {
             .distinctUntilChanged()
             .subscribe { [weak self] event in
                 guard case let .next(index) = event, let this = self else { return }
-                //TODO: dispatch action to change date for loading events
                 this.dateSelectionDidChange(toIndex: index)
             }
             .disposed(by: disposeBag)
@@ -42,16 +51,44 @@ final class ScoresHostViewController: UIViewController {
         if index == 2 {
             show(childViewController: livescoresViewController, in: containerView, updating: &self.currentChildViewController)
         } else {
+            actions.setDate(indexDates[index]!)
             show(childViewController: dayEventsViewController, in: containerView, updating: &self.currentChildViewController)
         }
     }
     
     private func setupDateSegmentedControl() {
-        let today = Date()
-        let dayBeforeYesterday = Calendar.current.date(byAdding: .day, value: -2, to: today)
-        let dayAfterTommorow = Calendar.current.date(byAdding: .day, value: 2, to: today)
-        
-        dateSegmentedControl.setTitle(dayBeforeYesterday?.dayOfTheWeek, forSegmentAt: 0)
-        dateSegmentedControl.setTitle(dayAfterTommorow?.dayOfTheWeek, forSegmentAt: 4)
+        dateSegmentedControl.setTitle(indexDates[0]!.dayOfTheWeek, forSegmentAt: 0)
+        dateSegmentedControl.setTitle(indexDates[4]!.dayOfTheWeek, forSegmentAt: 4)
     }
 }
+
+extension ScoresHostViewController: Connectable {
+    typealias AppStateType = AppState
+    
+    typealias PropsType = ScoresHostViewController.Props
+    
+    typealias ActionsType = ScoresHostViewController.Actions
+    
+    struct Props {}
+    
+    struct Actions {
+        let setDate: (Date) -> Void
+    }
+}
+
+private let mapStateToProps = { (appState: AppState) in
+    return ScoresHostViewController.Props()
+}
+
+private let mapDispatchToActions = { (dispatch: @escaping DispatchFunction) in
+    return ScoresHostViewController.Actions(setDate: { dispatch(ScoresHostAction.set($0)) }
+    )
+}
+
+private let indexDates = [
+    0: Date.today.offsetBy(days: -2),
+    1: Date.today.offsetBy(days: -1),
+    2: Date.today,
+    3: Date.today.offsetBy(days: 1),
+    4: Date.today.offsetBy(days: 2)
+]
