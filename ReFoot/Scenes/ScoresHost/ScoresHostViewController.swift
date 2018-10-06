@@ -37,6 +37,26 @@ final class ScoresHostViewController: UIViewController {
         super.viewDidLoad()
         
         setupDateSegmentedControl()
+        setupConnection()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        connection.connect()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        connection.disconnect()
+    }
+    
+    private func dateSelectionDidChange(toIndex index: Int) {
+        actions.setDate(indexDates[index]!)
+    }
+    
+    private func setupDateSegmentedControl() {
+        dateSegmentedControl.setTitle(indexDates[0]!.dayOfTheWeek, forSegmentAt: 0)
+        dateSegmentedControl.setTitle(indexDates[4]!.dayOfTheWeek, forSegmentAt: 4)
         
         dateSegmentedControl.rx.value
             .distinctUntilChanged()
@@ -47,18 +67,15 @@ final class ScoresHostViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func dateSelectionDidChange(toIndex index: Int) {
-        if index == 2 {
-            show(childViewController: livescoresViewController, in: containerView, updating: &self.currentChildViewController)
-        } else {
-            actions.setDate(indexDates[index]!)
-            show(childViewController: dayEventsViewController, in: containerView, updating: &self.currentChildViewController)
+    private func setupConnection() {
+        connection.subscribe(\Props.date) { [weak self] (date) in
+            guard let this = self else { return }
+            if Date.today.isTheSameDay(as: date) {
+                this.show(childViewController: this.livescoresViewController, in: this.containerView, updating: &this.currentChildViewController)
+            } else {
+                this.show(childViewController: this.dayEventsViewController, in: this.containerView, updating: &this.currentChildViewController)
+            }
         }
-    }
-    
-    private func setupDateSegmentedControl() {
-        dateSegmentedControl.setTitle(indexDates[0]!.dayOfTheWeek, forSegmentAt: 0)
-        dateSegmentedControl.setTitle(indexDates[4]!.dayOfTheWeek, forSegmentAt: 4)
     }
 }
 
@@ -69,7 +86,9 @@ extension ScoresHostViewController: Connectable {
     
     typealias ActionsType = ScoresHostViewController.Actions
     
-    struct Props {}
+    struct Props {
+        let date: Date
+    }
     
     struct Actions {
         let setDate: (Date) -> Void
@@ -77,12 +96,11 @@ extension ScoresHostViewController: Connectable {
 }
 
 private let mapStateToProps = { (appState: AppState) in
-    return ScoresHostViewController.Props()
+    return ScoresHostViewController.Props(date: appState.scoresHostState.date)
 }
 
 private let mapDispatchToActions = { (dispatch: @escaping DispatchFunction) in
-    return ScoresHostViewController.Actions(setDate: { dispatch(ScoresHostAction.set($0)) }
-    )
+    return ScoresHostViewController.Actions(setDate: { dispatch(ScoresHostAction.set($0)) })
 }
 
 private let indexDates = [

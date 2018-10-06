@@ -25,6 +25,10 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: days, to: self)!
     }
     
+    func isTheSameDay(as date: Date) -> Bool {
+        return Calendar.current.isDate(self, inSameDayAs: date)
+    }
+    
     static var today: Date {
         return Date()
     }

@@ -15,7 +15,7 @@ func dayEventsMiddleware(using repository: FootballRepository) -> SimpleMiddlewa
 private func fetchDayEvents(action: Action, context: MiddlewareContext<AppState>, repository: FootballRepository) -> Action? {
     guard let fetchDayEventsAction = action as? DayEventsAction, case .fetch(let date) = fetchDayEventsAction else { return action }
     
-    if context.state?.dayEventsState.areEventsLoaded(for: date) == true {
+    if context.state?.dayEventsState.areEventsLoaded(for: date) == true || Date.today.isTheSameDay(as: date) {
         return action
     }
     

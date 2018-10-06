@@ -8,17 +8,13 @@
 
 import UIKit
 
-class DayEventsTableViewCell: UITableViewCell {
+final class DayEventsTableViewCell: UITableViewCell {
+    
+    static let identifier = "dayEventsTableViewCell"
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    @IBOutlet weak var homeTeamNameLabel: UILabel!
+    @IBOutlet weak var homeTeamScoreLabel: UILabel!
+    
+    @IBOutlet weak var awayTeamNameLabel: UILabel!
+    @IBOutlet weak var awayTeamScoreLabel: UILabel!
 }

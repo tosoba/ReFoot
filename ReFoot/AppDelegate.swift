@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // repo
         SwinjectStoryboard.defaultContainer.register(CacheFootballDataStore.self) { _ in
             CacheFootballDataStoreImpl()
-        }
+        }.inObjectScope(.container)
         
         SwinjectStoryboard.defaultContainer.register(RemoteFootballDataStore.self) { _ in
             RemoteFootballDataStoreImpl()
@@ -78,16 +78,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     createMiddleware(scoresHostMiddleware)
                 ]
             )
-        }
+        }.inObjectScope(.container)
         
         // viewControllers
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(ScoresHostViewController.self) { resolver, viewController in
+            viewController.store = resolver.resolve(Store<AppState>.self)!
+        }
+        
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LeaguesListViewController.self) { resolver, viewController in
+            viewController.store = resolver.resolve(Store<AppState>.self)!
+        }
+        
         SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LivescoresViewController.self) { resolver, viewController in
         }
         
         SwinjectStoryboard.defaultContainer.storyboardInitCompleted(DayEventsViewController.self) { resolver, viewController in
-        }
-        
-        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LeaguesListViewController.self) { resolver, viewController in
             viewController.store = resolver.resolve(Store<AppState>.self)!
         }
         
@@ -98,10 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LeagueTeamsViewController.self) { resolver, viewController in
-        }
-        
-        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(ScoresHostViewController.self) { resolver, viewController in
-            viewController.store = resolver.resolve(Store<AppState>.self)!
         }
     }
 }
