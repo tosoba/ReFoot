@@ -17,6 +17,8 @@ func leaguesListReducer(action: Action, state: LeaguesListState?) -> LeaguesList
     switch leaguesListAction {
     case .set(let loadable):
         currentState.leaguesLoadable = loadable
+    case .selectLeague(let league):
+        currentState.selectedLeague = league
     default:
         break
     }

@@ -28,20 +28,20 @@ struct MatchEvent: ImmutableMappable {
     let awayTeamId: String
     
     init(map: Map) throws {
-        id = (try? map.value("idEvent")) ?? nullId
-        labelShort = (try? map.value("strEvent")) ?? unknown
-        labelFull = (try? map.value("strFilename")) ?? unknown
-        leagueId = (try? map.value("idLeague")) ?? nullId
-        leagueName = (try? map.value("strLeague")) ?? unknown
-        homeTeamName = (try? map.value("strHomeTeam")) ?? unknown
-        awayTeamName = (try? map.value("strAwayTeam")) ?? unknown
-        round = (try? map.value("intRound")) ?? unknown
-        homeScore = (try? map.value("intHomeScore")) ?? unknownScore
-        awayScore =  (try? map.value("intAwayScore")) ?? unknownScore
-        date = (try? map.value("dateEvent")) ?? unknown
-        time = (try? map.value("strTime")) ?? unknown
-        homeTeamId = (try? map.value("idHomeTeam")) ?? nullId
-        awayTeamId = (try? map.value("idAwayTeam")) ?? nullId
+        id = (try? map.value("idEvent")) ?? Placeholder.nullId
+        labelShort = (try? map.value("strEvent")) ?? Placeholder.unknown
+        labelFull = (try? map.value("strFilename")) ?? Placeholder.unknown
+        leagueId = (try? map.value("idLeague")) ?? Placeholder.nullId
+        leagueName = (try? map.value("strLeague")) ?? Placeholder.unknown
+        homeTeamName = (try? map.value("strHomeTeam")) ?? Placeholder.unknown
+        awayTeamName = (try? map.value("strAwayTeam")) ?? Placeholder.unknown
+        round = (try? map.value("intRound")) ?? Placeholder.unknown
+        homeScore = (try? map.value("intHomeScore")) ?? Placeholder.unknownScore
+        awayScore =  (try? map.value("intAwayScore")) ?? Placeholder.unknownScore
+        date = (try? map.value("dateEvent")) ?? Placeholder.unknown
+        time = (try? map.value("strTime")) ?? Placeholder.unknown
+        homeTeamId = (try? map.value("idHomeTeam")) ?? Placeholder.nullId
+        awayTeamId = (try? map.value("idAwayTeam")) ?? Placeholder.nullId
     }
 }
 

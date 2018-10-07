@@ -13,15 +13,26 @@ func leaguesListMiddleware(using repository: FootballRepository) -> SimpleMiddle
 }
 
 private func fetchLeagues(action: Action, context: MiddlewareContext<AppState>, repository: FootballRepository) -> Action? {
-    guard let fetchLeaguesList = action as? LeaguesListAction, case .fetch = fetchLeaguesList else { return action }
+    guard let fetchLeaguesListAction = action as? LeaguesListAction else { return action }
     
-    context.dispatch(LeaguesListAction.set(Loadable.loading))
-    
-    repository.getLeagues(thenOnSuccess: { leagues in
-        context.dispatch(LeaguesListAction.set(Loadable.value(EquatableArray(data: leagues))))
-    }, orOnError: { error in
-        context.dispatch(LeaguesListAction.set(Loadable.error(error)))
-    })
+    switch fetchLeaguesListAction {
+    case .fetch:
+        context.dispatch(LeaguesListAction.set(Loadable.loading))
+        
+        repository.getLeagues(thenOnSuccess: { leagues in
+            context.dispatch(LeaguesListAction.set(Loadable.value(EquatableArray(data: leagues))))
+        }, orOnError: { error in
+            context.dispatch(LeaguesListAction.set(Loadable.error(error)))
+        })
+    case .selectLeague(let league):
+        if context.state?.leagueTeamsState.areTeamsLoaded(for: league) == true {
+            return action
+        }
+        context.dispatch(LeagueTeamsAction.fetch(league))
+        return action
+    default:
+        return action
+    }
     
     return nil
 }

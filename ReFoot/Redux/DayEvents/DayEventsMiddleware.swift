@@ -19,12 +19,12 @@ private func fetchDayEvents(action: Action, context: MiddlewareContext<AppState>
         return action
     }
     
-    context.dispatch(DayEventsAction.set(Loadable.loading, date))
+    context.dispatch(DayEventsAction.set(.loading, date))
     
     repository.getMatchEvents(on: date, thenOnSuccess: { matchEvents in
-        context.dispatch(DayEventsAction.set(Loadable.value(EquatableArray(data: matchEvents)), date))
+        context.dispatch(DayEventsAction.set(.value(EquatableArray(data: matchEvents)), date))
     }, orOnError: { error in
-        context.dispatch(DayEventsAction.set(Loadable.error(error), date))
+        context.dispatch(DayEventsAction.set(.error(error), date))
     })
  
     return nil

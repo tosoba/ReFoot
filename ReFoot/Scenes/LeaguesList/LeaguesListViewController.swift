@@ -49,7 +49,7 @@ final class LeaguesListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = leagueSections.value[0].leagues[indexPath.row]
+        actions.selectLeague(leagueSections.value[0].leagues[indexPath.row])
         performSegue(withIdentifier: identifierForSegue(fromViewControllerOfType: LeaguesListViewController.self, toViewControllerOfType: LeagueHostViewController.self)!, sender: self)
     }
     
@@ -97,18 +97,21 @@ extension LeaguesListViewController: Connectable {
     
     struct Props {
         let leaguesLoadable: Loadable<EquatableArray<League>>
+        let selectedLeague: League?
     }
     struct Actions {
-        let fetchLeagues: () -> ()
+        let fetchLeagues: () -> Void
+        let selectLeague: (League) -> Void
     }
 }
 
 private let mapStateToProps = { (appState: AppState) in
-    return LeaguesListViewController.Props(leaguesLoadable: appState.leaguesListState.leaguesLoadable)
+    return LeaguesListViewController.Props(leaguesLoadable: appState.leaguesListState.leaguesLoadable, selectedLeague: appState.leaguesListState.selectedLeague)
 }
 
 private let mapDispatchToActions = { (dispatch: @escaping DispatchFunction) in
     return LeaguesListViewController.Actions(
-        fetchLeagues: { dispatch(LeaguesListAction.fetch) }
+        fetchLeagues: { dispatch(LeaguesListAction.fetch) },
+        selectLeague: { dispatch(LeaguesListAction.selectLeague($0)) }
     )
 }

@@ -27,8 +27,8 @@ struct League: ImmutableMappable {
     let trophy: String?
     
     init(map: Map) throws {
-        id = (try? map.value("idLeague")) ?? nullId
-        name = (try? map.value("strLeague")) ?? unknown
+        id = (try? map.value("idLeague")) ?? Placeholder.nullId
+        name = (try? map.value("strLeague")) ?? Placeholder.unknown
         country = try? map.value("strCountry")
         websiteURL = try? map.value("strWebsite")
         facebookURL = try? map.value("strFacebook")

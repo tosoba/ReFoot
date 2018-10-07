@@ -11,6 +11,7 @@ import ReSwift
 
 struct LeaguesListState: StateType {
     var leaguesLoadable: Loadable<EquatableArray<League>>
+    var selectedLeague: League?
 }
 
-let initialLeaguesState = LeaguesListState(leaguesLoadable: .initial)
+let initialLeaguesState = LeaguesListState(leaguesLoadable: .initial, selectedLeague: nil)

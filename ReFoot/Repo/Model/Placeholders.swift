@@ -8,6 +8,9 @@
 
 import Foundation
 
-let nullId = "NULL"
-let unknown = "Unknown"
-let unknownScore = "?"
+struct Placeholder {
+    static let nullId = "NULL"
+    static let unknown = "Unknown"
+    static let unknownScore = "?"
+}
+

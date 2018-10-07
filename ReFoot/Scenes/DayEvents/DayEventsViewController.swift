@@ -92,7 +92,7 @@ final class DayEventsViewController: UITableViewController {
         })
         
         dataSource.titleForHeaderInSection = { [weak self] (dataSource, section) in
-            return self?.dayEventsSections.value[section].title ?? unknown
+            return self?.dayEventsSections.value[section].title ?? Placeholder.unknown
         }
         
         dayEventsSections.asObservable()

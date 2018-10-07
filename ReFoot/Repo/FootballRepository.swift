@@ -11,6 +11,7 @@ import RxSwift
 protocol FootballRepository {
     func getLeagues(thenOnSuccess onSuccess: @escaping ([League]) -> Void, orOnError onError: @escaping (Error) -> Void)
     func getMatchEvents(on date: Date, thenOnSuccess onSuccess: @escaping ([MatchEvent]) -> Void, orOnError onError: @escaping (Error) -> Void)
+    func getTeams(in league: League, henOnSuccess onSuccess: @escaping ([Team]) -> Void, orOnError onError: @escaping (Error) -> Void)
 }
 
 final class FootballRepositoryImpl : FootballRepository {
@@ -66,6 +67,23 @@ final class FootballRepositoryImpl : FootballRepository {
                 switch event {
                 case .next(let matchEvents):
                     onSuccess(matchEvents)
+                case .error(let error):
+                    onError(error)
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func getTeams(in league: League, henOnSuccess onSuccess: @escaping ([Team]) -> Void, orOnError onError: @escaping (Error) -> Void) {
+        remote.teams(in: league)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler.instance)
+            .subscribe { event in
+                switch event {
+                case .next(let teams):
+                    onSuccess(teams)
                 case .error(let error):
                     onError(error)
                 default:

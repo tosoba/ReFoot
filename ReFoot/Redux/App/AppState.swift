@@ -12,10 +12,12 @@ struct AppState: StateType {
     let leaguesListState: LeaguesListState
     let dayEventsState: DayEventsState
     let scoresHostState: ScoresHostState
+    let leagueTeamsState: LeagueTeamsState
 }
 
 let initialAppState = AppState(
     leaguesListState: initialLeaguesState,
     dayEventsState: initialDayEventsState,
-    scoresHostState: initialScoresHostState
+    scoresHostState: initialScoresHostState,
+    leagueTeamsState: initialLeagueTeamsState
 )
