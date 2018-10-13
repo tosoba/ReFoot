@@ -16,7 +16,7 @@ final class LeaguesListViewController: UITableViewController {
     
     var store: Store<AppState>!
     
-    private let leagueSections = Variable<[LeaguesListTableViewSection]>([LeaguesListTableViewSection(title: "Default", leagues: [])])
+    private let leagueSections = Variable<[RxTableViewAnimatableTitledSection<League>]>([RxTableViewAnimatableTitledSection<League>(title: "Default", sectionItems: [])])
     
     private let disposeBag = DisposeBag()
     
@@ -49,7 +49,7 @@ final class LeaguesListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        actions.selectLeague(leagueSections.value[0].leagues[indexPath.row])
+        actions.selectLeague(leagueSections.value[0].sectionItems[indexPath.row])
         performSegue(withIdentifier: identifierForSegue(fromViewControllerOfType: LeaguesListViewController.self, toViewControllerOfType: LeagueHostViewController.self)!, sender: self)
     }
     
@@ -58,7 +58,7 @@ final class LeaguesListViewController: UITableViewController {
             guard let this = self else { return }
             switch loadable {
             case .value(let newLeagues):
-                this.leagueSections.value[0].leagues.append(contentsOf: newLeagues.data)
+                this.leagueSections.value[0].sectionItems.append(contentsOf: newLeagues.data)
                 if this.loadingViewControllerShowing {
                     this.dismiss(animated: true, completion: nil)
                     this.loadingViewControllerShowing = false
@@ -75,7 +75,7 @@ final class LeaguesListViewController: UITableViewController {
     private func setupTableView() {
         tableView.dataSource = nil
         
-        let dataSource = RxTableViewSectionedAnimatedDataSource<LeaguesListTableViewSection>(configureCell: { (dataSource, tableView, indexPath, item) in
+        let dataSource = RxTableViewSectionedAnimatedDataSource<RxTableViewAnimatableTitledSection<League>>(configureCell: { (dataSource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: LeaguesListTableViewCell.identifier, for: indexPath) as! LeaguesListTableViewCell
             cell.leagueNameLabel.text = item.name
             cell.badgeURL = item.badge ?? item.logo

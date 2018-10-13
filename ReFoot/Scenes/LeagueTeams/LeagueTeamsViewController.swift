@@ -14,7 +14,7 @@ import RxDataSources
 import FoldingCell
 
 final class LeagueTeamsViewController: UITableViewController {
-
+    
     static let identifier = "LeagueTeamsViewController"
     
     var store: Store<AppState>!
@@ -31,7 +31,7 @@ final class LeagueTeamsViewController: UITableViewController {
     
     private let disposeBag = DisposeBag()
     
-    private let teamSections = Variable<[LeagueTeamsTableViewSection]>([LeagueTeamsTableViewSection(title: "Default", teams: [])])
+    private let teamSections = Variable<[RxTableViewAnimatableTitledSection<Team>]>([RxTableViewAnimatableTitledSection(title: "Default", sectionItems: [])])
     
     struct CellHeight {
         static let closed: CGFloat = 75 // equal or greater foregroundView height
@@ -42,7 +42,7 @@ final class LeagueTeamsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTableView()
         setupConnection()
     }
@@ -62,7 +62,7 @@ final class LeagueTeamsViewController: UITableViewController {
         tableView.estimatedRowHeight = CellHeight.closed
         tableView.dataSource = nil
         
-        let dataSource = RxTableViewSectionedAnimatedDataSource<LeagueTeamsTableViewSection>(configureCell: { (dataSource, tableView, indexPath, item) in
+        let dataSource = RxTableViewSectionedAnimatedDataSource<RxTableViewAnimatableTitledSection<Team>>(configureCell: { (dataSource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: LeagueTeamsTableViewCell.identifier, for: indexPath) as! LeagueTeamsTableViewCell
             
             return cell
@@ -78,8 +78,8 @@ final class LeagueTeamsViewController: UITableViewController {
             guard let this = self else { return }
             switch loadable {
             case .value(let teams):
-                this.teamSections.value[0].teams.append(contentsOf: teams.data)
-                this.cellHeights = Array(repeating: CellHeight.closed, count: this.teamSections.value[0].teams.count)
+                this.teamSections.value[0].sectionItems.append(contentsOf: teams.data)
+                this.cellHeights = Array(repeating: CellHeight.closed, count: this.teamSections.value[0].sectionItems.count)
                 if this.loadingViewControllerShowing {
                     this.dismiss(animated: true, completion: nil)
                     this.loadingViewControllerShowing = false
@@ -159,3 +159,4 @@ extension LeagueTeamsViewController {
         }
     }
 }
+

@@ -26,7 +26,7 @@ final class DayEventsViewController: UITableViewController {
     
     private let disposeBag = DisposeBag()
     
-    private let dayEventsSections = Variable<[DayEventsTableViewSection]>([])
+    private let dayEventsSections = Variable<[RxTableViewAnimatableTitledSection<MatchEvent>]>([])
     
     private lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading events")
     
@@ -63,7 +63,7 @@ final class DayEventsViewController: UITableViewController {
             switch loadable {
             case .value(let newEvents):
                 let sections = Dictionary(grouping: newEvents.data, by: { $0.leagueName }).map { (leagueName, events) in
-                    DayEventsTableViewSection(title: leagueName, events: events)
+                    RxTableViewAnimatableTitledSection<MatchEvent>(title: leagueName, sectionItems: events)
                 }
                 this.dayEventsSections.value.append(contentsOf: sections)
                 if this.loadingViewControllerShowing {
@@ -82,7 +82,7 @@ final class DayEventsViewController: UITableViewController {
     private func setupTableView() {
         tableView.dataSource = nil
         
-        let dataSource = RxTableViewSectionedAnimatedDataSource<DayEventsTableViewSection>(configureCell: { (dataSource, tableView, indexPath, item) in
+        let dataSource = RxTableViewSectionedAnimatedDataSource<RxTableViewAnimatableTitledSection<MatchEvent>>(configureCell: { (dataSource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: DayEventsTableViewCell.identifier, for: indexPath) as! DayEventsTableViewCell
             cell.homeTeamNameLabel.text = item.homeTeamName
             cell.awayTeamNameLabel.text = item.awayTeamName
