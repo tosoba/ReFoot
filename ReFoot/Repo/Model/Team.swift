@@ -30,7 +30,7 @@ struct Team: ImmutableMappable {
     let teamJerseyURL: String?
     let teamLogoURL: String?
     let fanarts: [String]
-    let teamBanner: String?
+    let teamBannerURL: String?
     let youtubeURL: String?
     
     init(map: Map) throws {
@@ -59,7 +59,7 @@ struct Team: ImmutableMappable {
         let fanart4: String? = try? map.value("strTeamFanart4")
         fanarts = [fanart1, fanart2, fanart3, fanart4,].filter { $0 != nil }.map { $0! }
         
-        teamBanner = try? map.value("strTeamBanner")
+        teamBannerURL = try? map.value("strTeamBanner")
         youtubeURL = try? map.value("strYoutube")
     }
 }

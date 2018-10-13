@@ -78,7 +78,7 @@ final class LeaguesListViewController: UITableViewController {
         let dataSource = RxTableViewSectionedAnimatedDataSource<RxTableViewAnimatableTitledSection<League>>(configureCell: { (dataSource, tableView, indexPath, item) in
             let cell = tableView.dequeueReusableCell(withIdentifier: LeaguesListTableViewCell.identifier, for: indexPath) as! LeaguesListTableViewCell
             cell.leagueNameLabel.text = item.name
-            cell.badgeURL = item.badge ?? item.logo
+            cell.leagueBadgeImageView.loadFromURL(item.badge ?? item.logo)
             return cell
         })
         
