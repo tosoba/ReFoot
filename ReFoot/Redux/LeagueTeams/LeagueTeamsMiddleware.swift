@@ -17,11 +17,9 @@ private func fetchLeagueTeams(action: Action, context: MiddlewareContext<AppStat
         return action
     }
     
-    
-    
     context.dispatch(LeagueTeamsAction.set(.loading, league))
     
-    repository.getTeams(in: league, henOnSuccess: { leagueTeams in
+    repository.getTeams(in: league, thenOnSuccess: { leagueTeams in
         context.dispatch(LeagueTeamsAction.set(.value(EquatableArray(data: leagueTeams)), league))
     }, orOnError: { error in
         context.dispatch(LeagueTeamsAction.set(.error(error), league))

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1F76802E3855412B70A7548C /* Pods_ReFoot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372AE8403D17305C7433EFC7 /* Pods_ReFoot.framework */; };
 		3306452B2157FD90003E7FD7 /* EquatableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306452A2157FD90003E7FD7 /* EquatableArray.swift */; };
+		33215AA92171E0A40016FEFC /* LeagueTeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33215AA82171E0A40016FEFC /* LeagueTeamsTableViewCell.swift */; };
+		33215AAB2171E69C0016FEFC /* LeagueTeamsTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33215AAA2171E69C0016FEFC /* LeagueTeamsTableViewSection.swift */; };
 		332F0418215F895300336CFE /* LeaguesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F0417215F895300336CFE /* LeaguesListTableViewCell.swift */; };
 		33313FDA216A095700D5B5E2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33313FD9216A095700D5B5E2 /* Team.swift */; };
 		3335D29A2156A33500BC7D26 /* DayEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3335D2992156A33500BC7D26 /* DayEventsViewController.swift */; };
@@ -90,6 +92,8 @@
 
 /* Begin PBXFileReference section */
 		3306452A2157FD90003E7FD7 /* EquatableArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableArray.swift; sourceTree = "<group>"; };
+		33215AA82171E0A40016FEFC /* LeagueTeamsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTeamsTableViewCell.swift; sourceTree = "<group>"; };
+		33215AAA2171E69C0016FEFC /* LeagueTeamsTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTeamsTableViewSection.swift; sourceTree = "<group>"; };
 		332F0417215F895300336CFE /* LeaguesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesListTableViewCell.swift; sourceTree = "<group>"; };
 		33313FD9216A095700D5B5E2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		3335D2992156A33500BC7D26 /* DayEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				3335D2A72156B11B00BC7D26 /* LeagueTeamsViewController.swift */,
+				33215AA82171E0A40016FEFC /* LeagueTeamsTableViewCell.swift */,
+				33215AAA2171E69C0016FEFC /* LeagueTeamsTableViewSection.swift */,
 				3335D2AD2156B17B00BC7D26 /* LeagueTeams.storyboard */,
 			);
 			path = LeagueTeams;
@@ -622,6 +628,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ReRxSwift/ReRxSwift.framework",
@@ -643,6 +650,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReRxSwift.framework",
@@ -716,6 +724,7 @@
 				333AFC4C216A1170002DB76F /* LeagueTeamsReducer.swift in Sources */,
 				337B4D062157BB35006A2665 /* AppState.swift in Sources */,
 				33313FDA216A095700D5B5E2 /* Team.swift in Sources */,
+				33215AAB2171E69C0016FEFC /* LeagueTeamsTableViewSection.swift in Sources */,
 				3378501C2168B9AE00FF53F5 /* ScoresHostReducer.swift in Sources */,
 				338E00A021569205004A5390 /* LeaguesListViewController.swift in Sources */,
 				339D8B752157AA0300569BC0 /* CacheFootballDataStore.swift in Sources */,
@@ -728,6 +737,7 @@
 				3335D29A2156A33500BC7D26 /* DayEventsViewController.swift in Sources */,
 				337850242168CC5E00FF53F5 /* DayEventsTableViewSection.swift in Sources */,
 				33B76C9F215FDA3E008A1026 /* CacheTimes.swift in Sources */,
+				33215AA92171E0A40016FEFC /* LeagueTeamsTableViewCell.swift in Sources */,
 				333AFC4A216A1129002DB76F /* LeagueTeamsAction.swift in Sources */,
 				33B76C9D215FD577008A1026 /* Persistable.swift in Sources */,
 				337B4D0D2157BE07006A2665 /* Placeholders.swift in Sources */,
