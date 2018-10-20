@@ -9,15 +9,13 @@
 import ReSwift
 
 struct AppState: StateType {
-    let leaguesListState: LeaguesListState
+    let leaguesState: LeaguesState
     let dayEventsState: DayEventsState
     let scoresHostState: ScoresHostState
-    let leagueTeamsState: LeagueTeamsState
 }
 
 let initialAppState = AppState(
-    leaguesListState: initialLeaguesState,
+    leaguesState: initialLeaguesState,
     dayEventsState: initialDayEventsState,
-    scoresHostState: initialScoresHostState,
-    leagueTeamsState: initialLeagueTeamsState
+    scoresHostState: initialScoresHostState
 )

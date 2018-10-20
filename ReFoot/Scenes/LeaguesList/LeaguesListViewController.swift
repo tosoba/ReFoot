@@ -106,12 +106,12 @@ extension LeaguesListViewController: Connectable {
 }
 
 private let mapStateToProps = { (appState: AppState) in
-    return LeaguesListViewController.Props(leaguesLoadable: appState.leaguesListState.leaguesLoadable, selectedLeague: appState.leaguesListState.selectedLeague)
+    return LeaguesListViewController.Props(leaguesLoadable: appState.leaguesState.leaguesLoadable, selectedLeague: appState.leaguesState.selectedLeague)
 }
 
 private let mapDispatchToActions = { (dispatch: @escaping DispatchFunction) in
     return LeaguesListViewController.Actions(
-        fetchLeagues: { dispatch(LeaguesListAction.fetch) },
-        selectLeague: { dispatch(LeaguesListAction.selectLeague($0)) }
+        fetchLeagues: { dispatch(LeaguesAction.fetchLeagues) },
+        selectLeague: { dispatch(LeaguesAction.selectLeague($0)) }
     )
 }

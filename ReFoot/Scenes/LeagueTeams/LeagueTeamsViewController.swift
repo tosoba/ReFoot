@@ -114,7 +114,7 @@ extension LeagueTeamsViewController: Connectable {
 }
 
 private let mapStateToProps = { (appState: AppState) in
-    return LeagueTeamsViewController.Props(teamsLoadable: appState.leagueTeamsState.leagueTeams[appState.leaguesListState.selectedLeague!.id] ?? .initial)
+    return LeagueTeamsViewController.Props(teamsLoadable: appState.leaguesState.teams[appState.leaguesState.selectedLeague!.id] ?? .initial)
 }
 
 private let mapDispatchToActions = { (dispatch: @escaping DispatchFunction) in

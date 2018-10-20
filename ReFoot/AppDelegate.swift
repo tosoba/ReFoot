@@ -73,10 +73,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 reducer: appReducer,
                 state: nil,
                 middleware: [
-                    createMiddleware(leaguesListMiddleware(using: resolver.resolve(FootballRepository.self)!)),
+                    createMiddleware(leaguesMiddleware(using: resolver.resolve(FootballRepository.self)!)),
                     createMiddleware(dayEventsMiddleware(using: resolver.resolve(FootballRepository.self)!)),
-                    createMiddleware(scoresHostMiddleware),
-                    createMiddleware(leagueTeamsMiddleware(using: resolver.resolve(FootballRepository.self)!))
+                    createMiddleware(scoresHostMiddleware)
                 ]
             )
         }.inObjectScope(.container)
