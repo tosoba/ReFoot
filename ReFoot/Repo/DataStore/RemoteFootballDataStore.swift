@@ -15,47 +15,33 @@ protocol RemoteFootballDataStore {
     var leagues: Observable<[League]> { get }
     func matchEvents(on date: Date) -> Observable<[MatchEvent]>
     func teams(in league: League) -> Observable<[Team]>
+    func leagueTable(for league: League) -> Observable<[LeagueTableTeam]>
 }
 
 final class RemoteFootballDataStoreImpl : RemoteFootballDataStore {
     
     var leagues: Observable<[League]> {
-        return URLSession.shared.rx
-            .json(url: URLFor.allLeagues)
-            .map { (result: Any) -> [League] in
-                let json = result as! [String : Any]
-                let leaguesJSON = json["countrys"] as! [[String: Any]]
-                return leaguesJSON.map { leagueJson in
-                    let map = Map(mappingType: .fromJSON, JSON: leagueJson)
-                    return try! League(map: map)
-            }
-        }
+        return callEndpoint(identifiedBy: URLFor.allLeagues)
+            .mapResultToArrayOfImmutables(usingDataFromJSONPropertyCalled: "countrys")
     }
     
     func matchEvents(on date: Date) -> Observable<[MatchEvent]> {
-        return URLSession.shared.rx
-            .json(url: URLFor.matchEvents(on: date.toStringYearMonthDay()))
-            .map { (result: Any) -> [MatchEvent] in
-                let json = result as! [String : Any]
-                let eventsJSON = json["events"] as! [[String: Any]]
-                return eventsJSON.map { eventJson in
-                    let map = Map(mappingType: .fromJSON, JSON: eventJson)
-                    return try! MatchEvent(map: map)
-            }
-        }
+        return callEndpoint(identifiedBy: URLFor.matchEvents(on: date.toStringYearMonthDay()))
+            .mapResultToArrayOfImmutables(usingDataFromJSONPropertyCalled: "events")
     }
     
     func teams(in league: League) -> Observable<[Team]> {
-        return URLSession.shared.rx
-            .json(url: URLFor.teams(inLeagueNamed: league.name))
-            .map { (result: Any) -> [Team] in
-                let json = result as! [String : Any]
-                let teamsJSON = json["teams"] as! [[String: Any]]
-                return teamsJSON.map { teamJSON in
-                    let map = Map(mappingType: .fromJSON, JSON: teamJSON)
-                    return try! Team(map: map)
-                }
-        }
+        return callEndpoint(identifiedBy: URLFor.teams(inLeagueNamed: league.name))
+            .mapResultToArrayOfImmutables(usingDataFromJSONPropertyCalled: "teams")
+    }
+    
+    func leagueTable(for league: League) -> Observable<[LeagueTableTeam]> {
+        return callEndpoint(identifiedBy: URLFor.table(ofLeagueWithId: league.id))
+            .mapResultToArrayOfImmutables(usingDataFromJSONPropertyCalled: "table")
+    }
+    
+    private func callEndpoint(identifiedBy url: URL) -> Observable<Any> {
+        return URLSession.shared.rx.json(url: url)
     }
 }
 
@@ -70,5 +56,9 @@ struct URLFor {
     
     static func teams(inLeagueNamed name: String) -> URL {
         return URL(string: "\(base)search_all_teams.php?l=\(name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")!
+    }
+    
+    static func table(ofLeagueWithId id: String) -> URL {
+        return URL(string: "\(base)lookuptable.php?l=\(id)")!
     }
 }

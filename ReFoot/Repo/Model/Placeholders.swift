@@ -12,5 +12,5 @@ struct Placeholder {
     static let nullId = "NULL"
     static let unknown = "Unknown"
     static let unknownScore = "?"
+    static let unknownNumber = -1
 }
-

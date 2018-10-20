@@ -12,6 +12,7 @@ protocol FootballRepository {
     func getLeagues(thenOnSuccess onSuccess: @escaping ([League]) -> Void, orOnError onError: @escaping (Error) -> Void)
     func getMatchEvents(on date: Date, thenOnSuccess onSuccess: @escaping ([MatchEvent]) -> Void, orOnError onError: @escaping (Error) -> Void)
     func getTeams(in league: League, thenOnSuccess onSuccess: @escaping ([Team]) -> Void, orOnError onError: @escaping (Error) -> Void)
+    func getTable(for league: League, thenOnSuccess onSuccess: @escaping ([LeagueTableTeam]) -> Void, orOnError onError: @escaping (Error) -> Void)
 }
 
 final class FootballRepositoryImpl : FootballRepository {
@@ -44,52 +45,23 @@ final class FootballRepositoryImpl : FootballRepository {
                     return Observable.just(cachedLeagues)
                 }
             }
-            .catchError { (error: Error) throws -> Observable<[League]> in remoteLeagues }
+            .catchError { _ in remoteLeagues }
             .observeOn(MainScheduler.instance)
-            .subscribe { event in
-                switch event {
-                case .next(let leagues):
-                    onSuccess(leagues)
-                case .error(let error):
-                    onError(error)
-                default:
-                    break
-                }
-            }
-            .disposed(by: disposeBag)
+            .subscribe(thenOnSuccess: onSuccess, orOnError: onError, laterDisposeUsing: disposeBag)
     }
     
     func getMatchEvents(on date: Date, thenOnSuccess onSuccess: @escaping ([MatchEvent]) -> Void, orOnError onError: @escaping (Error) -> Void) {
         remote.matchEvents(on: date)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .subscribe { event in
-                switch event {
-                case .next(let matchEvents):
-                    onSuccess(matchEvents)
-                case .error(let error):
-                    onError(error)
-                default:
-                    break
-                }
-            }
-            .disposed(by: disposeBag)
+            .subscribeOnBackgroundAndObserveOnMainThread(thenOnSuccess: onSuccess, orOnError: onError, laterDisposeUsing: disposeBag)
     }
     
     func getTeams(in league: League, thenOnSuccess onSuccess: @escaping ([Team]) -> Void, orOnError onError: @escaping (Error) -> Void) {
         remote.teams(in: league)
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler.instance)
-            .subscribe { event in
-                switch event {
-                case .next(let teams):
-                    onSuccess(teams)
-                case .error(let error):
-                    onError(error)
-                default:
-                    break
-                }
-            }
-            .disposed(by: disposeBag)
+            .subscribeOnBackgroundAndObserveOnMainThread(thenOnSuccess: onSuccess, orOnError: onError, laterDisposeUsing: disposeBag)
+    }
+    
+    func getTable(for league: League, thenOnSuccess onSuccess: @escaping ([LeagueTableTeam]) -> Void, orOnError onError: @escaping (Error) -> Void) {
+        remote.leagueTable(for: league)
+            .subscribeOnBackgroundAndObserveOnMainThread(thenOnSuccess: onSuccess, orOnError: onError, laterDisposeUsing: disposeBag)
     }
 }
