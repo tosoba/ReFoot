@@ -29,4 +29,11 @@ enum Loadable<T: Equatable>: Equatable {
     case loading
     case value(T)
     case error(Error)
+    
+    var isValueSet: Bool {
+        switch self {
+        case .value(_): return true
+        default: return false
+        }
+    }
 }

@@ -9,10 +9,12 @@
 import ReSwift
 
 func dayEventsMiddleware(using repository: FootballRepository) -> SimpleMiddleware<AppState> {
-    return { fetchDayEvents(action: $0, context: $1, repository: repository) }
+    return { (action, context) in
+        handleDayEventsAction(action, in: context, using: repository)
+    }
 }
 
-private func fetchDayEvents(action: Action, context: MiddlewareContext<AppState>, repository: FootballRepository) -> Action? {
+private func handleDayEventsAction(_ action: Action, in context: MiddlewareContext<AppState>, using repository: FootballRepository) -> Action? {
     guard let fetchDayEventsAction = action as? DayEventsAction, case .fetch(let date) = fetchDayEventsAction else { return action }
     
     if context.state?.dayEventsState.areEventsLoaded(for: date) == true || Date.today.isTheSameDay(as: date) {

@@ -9,11 +9,13 @@
 import ReSwift
 
 var scoresHostMiddleware: SimpleMiddleware<AppState> {
-    return { changeScoresHostDate(action: $0, context: $1) }
+    return { (action, context) in
+        handleScoresHostAction(action, in: context)
+    }
 }
 
-func changeScoresHostDate(action: Action, context: MiddlewareContext<AppState>) -> Action? {
-    guard let changeScoresHostDateAction = action as? ScoresHostAction, case .set(let date) = changeScoresHostDateAction else { return action }
+func handleScoresHostAction(_ action: Action, in context: MiddlewareContext<AppState>) -> Action? {
+    guard let scoresHostAction = action as? ScoresHostAction, case .set(let date) = scoresHostAction else { return action }
     context.dispatch(DayEventsAction.fetch(date))
     return action
 }

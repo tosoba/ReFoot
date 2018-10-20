@@ -13,18 +13,17 @@ struct LeaguesState: StateType {
     var leaguesLoadable: Loadable<EquatableArray<League>>
     var selectedLeague: League?
     var teams: [String: Loadable<EquatableArray<Team>>]
+    var tables: [String: Loadable<EquatableArray<LeagueTableTeam>>]
     
     func areTeamsLoaded(for league: League) -> Bool {
-        guard let teamsInLeague = teams[league.id] else {
-            return false
-        }
-        switch teamsInLeague {
-        case .value(_):
-            return true
-        default:
-            return false
-        }
+        guard let teamsInLeague = teams[league.id] else { return false }
+        return teamsInLeague.isValueSet
+    }
+    
+    func isTableLoaded(for league: League) -> Bool {
+        guard let table = tables[league.id] else { return false }
+        return table.isValueSet
     }
 }
 
-let initialLeaguesState = LeaguesState(leaguesLoadable: .initial, selectedLeague: nil, teams: [:])
+let initialLeaguesState = LeaguesState(leaguesLoadable: .initial, selectedLeague: nil, teams: [:], tables: [:])

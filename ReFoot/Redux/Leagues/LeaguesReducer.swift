@@ -10,9 +10,7 @@ import ReSwift
 
 func leaguesReducer(action: Action, state: LeaguesState?) -> LeaguesState {
     var currentState = state ?? initialLeaguesState
-    guard let leaguesAction = action as? LeaguesAction else {
-        return currentState
-    }
+    guard let leaguesAction = action as? LeaguesAction else { return currentState }
     
     switch leaguesAction {
     case .setLeagues(let loadableLeagues):
@@ -21,6 +19,8 @@ func leaguesReducer(action: Action, state: LeaguesState?) -> LeaguesState {
         currentState.selectedLeague = league
     case .setTeamsForLeague(let loadableTeams, let league):
         currentState.teams[league.id] = loadableTeams
+    case .setTableForLeague(let loadableLeagueTableTeams, let league):
+        currentState.tables[league.id] = loadableLeagueTableTeams
     default:
         break
     }

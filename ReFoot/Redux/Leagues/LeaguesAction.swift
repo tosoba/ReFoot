@@ -11,8 +11,12 @@ import ReSwift
 enum LeaguesAction: Action {
     case fetchLeagues
     case setLeagues(Loadable<EquatableArray<League>>)
+    
     case selectLeague(League)
     
     case fetchTeams(League)
     case setTeamsForLeague(Loadable<EquatableArray<Team>>, League)
+    
+    case fetchTable(League)
+    case setTableForLeague(Loadable<EquatableArray<LeagueTableTeam>>, League)
 }
