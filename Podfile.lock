@@ -1,14 +1,14 @@
 PODS:
-  - Alamofire (4.7.0)
-  - Differentiator (3.0.2)
-  - FoldingCell (3.0.3)
-  - Kingfisher (4.6.3)
-  - ObjectMapper (3.1.0)
-  - Realm (3.2.0):
-    - Realm/Headers (= 3.2.0)
-  - Realm/Headers (3.2.0)
-  - RealmSwift (3.2.0):
-    - Realm (= 3.2.0)
+  - Alamofire (4.8.0)
+  - Differentiator (3.1.0)
+  - FoldingCell (4.0.2)
+  - Kingfisher (5.0.0)
+  - ObjectMapper (3.4.1)
+  - Realm (3.13.0):
+    - Realm/Headers (= 3.13.0)
+  - Realm/Headers (3.13.0)
+  - RealmSwift (3.13.0):
+    - Realm (= 3.13.0)
   - ReRxSwift (1.2.2):
     - ReSwift (~> 4.0)
     - RxCocoa (~> 4.0)
@@ -16,70 +16,91 @@ PODS:
   - ReSwift (4.0.1)
   - ReSwiftRouter (0.6.0):
     - ReSwift (~> 4.0.0)
-  - RxAlamofire (4.1.0):
-    - RxAlamofire/Core (= 4.1.0)
-  - RxAlamofire/Core (4.1.0):
+  - RxAlamofire (4.3.0):
+    - RxAlamofire/Core (= 4.3.0)
+  - RxAlamofire/Core (4.3.0):
     - Alamofire (~> 4.5)
+    - RxSwift (~> 4)
+  - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
-  - RxCocoa (4.1.2):
-    - RxSwift (~> 4.0)
-  - RxCoreData (0.4.0):
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxDataSources (3.0.2):
+  - RxCoreData (0.5.1):
+    - RxSwift (~> 4.3.1)
+  - RxDataSources (3.1.0):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxOptional (3.3.0):
+  - RxOptional (3.6.2):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxRealm (0.7.5):
+  - RxRealm (0.7.6):
     - RealmSwift (~> 3.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.1.2)
-  - Swinject (2.2.0)
-  - SwinjectStoryboard (1.1.2):
-    - Swinject (~> 2.1)
+  - RxSwift (4.3.1)
+  - Swinject (2.5.0)
+  - SwinjectStoryboard (2.1.0):
+    - Swinject (~> 2.5)
 
 DEPENDENCIES:
   - FoldingCell
   - Kingfisher
   - ObjectMapper
   - RealmSwift
-  - ReRxSwift (~> 1.0)
+  - ReRxSwift
   - ReSwift
   - ReSwiftRouter
   - RxAlamofire
   - RxCocoa
   - RxCoreData
-  - RxDataSources (~> 3.0)
+  - RxDataSources
   - RxOptional
   - RxRealm
   - RxSwift
   - Swinject
   - SwinjectStoryboard
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Differentiator
+    - FoldingCell
+    - Kingfisher
+    - ObjectMapper
+    - Realm
+    - RealmSwift
+    - ReRxSwift
+    - ReSwift
+    - ReSwiftRouter
+    - RxAlamofire
+    - RxCocoa
+    - RxCoreData
+    - RxDataSources
+    - RxOptional
+    - RxRealm
+    - RxSwift
+    - Swinject
+    - SwinjectStoryboard
+
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
-  FoldingCell: 76ce5d1ddba34c6d25548b473b7b51585e992da0
-  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
-  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
-  Realm: ae552b9b9eca3a12374a589fa842f220e286a80a
-  RealmSwift: 05727129547dcab3fe828bd87bc30be903736b9c
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  FoldingCell: 352f0211a53f957b885a1b37d5ffa875da90bca5
+  Kingfisher: 2b0dd651e4fe5a07305b8242fde56f8e2d410f58
+  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
+  RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
   ReRxSwift: f442fb438094237a2918f9345709a31b2a64a9cd
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   ReSwiftRouter: 81f41b37a5dd1c88e1d3d10a660ff2dcc939ba7c
-  RxAlamofire: 96a2bff4694a1609bb59c57b53d99ea7a0ddc64a
-  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
-  RxCoreData: 3717ff29afb7261f8cff4b893ffb0650367d0fe6
-  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
-  RxOptional: e5448d3e21024489e07c31f6a262f2b50c975367
-  RxRealm: a6c6c0a07cb61f34209969ca6657734edfdfff30
-  RxSwift: e49536837d9901277638493ea537394d4b55f570
-  Swinject: 4ca48bca7de5f398229a26abe1ac902b9f3ee541
-  SwinjectStoryboard: 92e75763c3299cdf627bef98a5180dc894864336
+  RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxCoreData: fb535b9a617e9d84305b0e626fdac8162cd4b4bb
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
+  RxRealm: 5379eddd74f8d617ca7681d1f8d144af25b432b0
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
+  SwinjectStoryboard: 688f096033103e66ffcf6ca678211acd7d7be505
 
-PODFILE CHECKSUM: f433520a69667495f144160166e7a42f3decae5f
+PODFILE CHECKSUM: 8d297c05c0694a80d204f43fb4936680d2d642cb
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

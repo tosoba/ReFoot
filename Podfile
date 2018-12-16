@@ -17,14 +17,14 @@ target 'ReFoot' do
   # Redux
   pod 'ReSwift'
   pod 'ReSwiftRouter'
-  pod 'ReRxSwift', '~> 1.0'
+  pod 'ReRxSwift'
   pod 'RxRealm'
   
   # Rx
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxOptional'
-  pod 'RxDataSources', '~> 3.0'
+  pod 'RxDataSources'
   pod "RxCoreData"
   pod 'RxAlamofire'
 
