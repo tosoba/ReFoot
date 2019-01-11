@@ -75,7 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 middleware: [
                     createMiddleware(leaguesMiddleware(using: resolver.resolve(FootballRepository.self)!)),
                     createMiddleware(dayEventsMiddleware(using: resolver.resolve(FootballRepository.self)!)),
-                    createMiddleware(scoresHostMiddleware)
+                    createMiddleware(scoresHostMiddleware),
+                    createMiddleware(livescoresMiddleware(using: resolver.resolve(FootballRepository.self)!))
                 ]
             )
         }.inObjectScope(.container)
@@ -90,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LivescoresViewController.self) { resolver, viewController in
+            viewController.store = resolver.resolve(Store<AppState>.self)!
         }
         
         SwinjectStoryboard.defaultContainer.storyboardInitCompleted(DayEventsViewController.self) { resolver, viewController in

@@ -25,6 +25,7 @@ struct DayEventsState: StateType {
 let initialDayEventsState = DayEventsState(events: [
     Date.today.offsetBy(days: -2).toStringYearMonthDay() : .initial,
     Date.today.offsetBy(days: -1).toStringYearMonthDay() : .initial,
+    Date.today.toStringYearMonthDay() : .initial,
     Date.today.offsetBy(days: 1).toStringYearMonthDay() : .initial,
     Date.today.offsetBy(days: 2).toStringYearMonthDay() : .initial
 ])

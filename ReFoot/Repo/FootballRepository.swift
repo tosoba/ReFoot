@@ -68,8 +68,8 @@ final class FootballRepositoryImpl : FootballRepository {
         andSavingWith cacheSaveBlock:  @escaping ([T]) -> Completable,
         orByUsingRemote remoteGetBlock: @escaping () -> Observable<[T]>,
         thenOnSuccess onSuccess: @escaping ([T]) -> Void,
-        orOnError onError: @escaping (Error) -> Void
-        ) {
+        orOnError onError: @escaping (Error) -> Void) {
+        
         let remoteItems = remoteGetBlock()
             .observeOn(MainScheduler.instance)
             .flatMap { items in

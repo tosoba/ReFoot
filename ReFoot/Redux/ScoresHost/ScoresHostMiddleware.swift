@@ -17,5 +17,8 @@ var scoresHostMiddleware: SimpleMiddleware<AppState> {
 private func handleScoresHostAction(_ action: Action, in context: MiddlewareContext<AppState>) -> Action? {
     guard let scoresHostAction = action as? ScoresHostAction, case .set(let date) = scoresHostAction else { return action }
     context.dispatch(DayEventsAction.fetch(date))
+    if date.isTheSameDay(as: Date.today) {
+        context.dispatch(LivescoresAction.fetch)
+    }
     return action
 }
