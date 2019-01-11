@@ -90,6 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             viewController.store = resolver.resolve(Store<AppState>.self)!
         }
         
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LivescoresHostViewController.self) { resolver, viewController in
+            
+        }
+        
         SwinjectStoryboard.defaultContainer.storyboardInitCompleted(LivescoresViewController.self) { resolver, viewController in
             viewController.store = resolver.resolve(Store<AppState>.self)!
         }

@@ -29,7 +29,7 @@ final class ScoresHostViewController: UIViewController {
     
     private lazy var dayEventsViewController: DayEventsViewController = instantiateViewController(withIdentifier: DayEventsViewController.identifier, fromSwinjectStoryboardNamed: "DayEvents")
     
-    private lazy var livescoresViewController: LivescoresViewController = instantiateViewController(withIdentifier: LivescoresViewController.identifier, fromSwinjectStoryboardNamed: "Livescores")
+    private lazy var livescoresHostViewController: LivescoresHostViewController = instantiateViewController(withIdentifier: LivescoresHostViewController.identifier, fromSwinjectStoryboardNamed: "LivescoresHost")
     
     private var currentChildViewController: UIViewController?
     
@@ -71,7 +71,7 @@ final class ScoresHostViewController: UIViewController {
         connection.subscribe(\Props.date) { [weak self] (date) in
             guard let this = self else { return }
             if Date.today.isTheSameDay(as: date) {
-                this.show(childViewController: this.livescoresViewController, in: this.containerView, updating: &this.currentChildViewController)
+                this.show(childViewController: this.livescoresHostViewController, in: this.containerView, updating: &this.currentChildViewController)
             } else {
                 this.show(childViewController: this.dayEventsViewController, in: this.containerView, updating: &this.currentChildViewController)
             }

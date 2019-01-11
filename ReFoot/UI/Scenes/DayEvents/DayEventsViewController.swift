@@ -34,27 +34,20 @@ final class DayEventsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupTableView()
-        setupConnection()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupConnection()
         connection.connect()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        connection.disconnect()
         loadingViewControllerShowing = false
         dayEventsSections.value = []
-    }
-    
-    override func didMove(toParent parent: UIViewController?) {
-        if parent == nil {
-            connection.disconnect()
-        }
+        connection.disconnect()
     }
     
     private func setupConnection() {
@@ -65,14 +58,17 @@ final class DayEventsViewController: UITableViewController {
                 let sections = Dictionary(grouping: newEvents.data, by: { $0.leagueName }).map { (leagueName, events) in
                     RxTableViewAnimatableTitledSection<MatchEvent>(title: leagueName, sectionItems: events)
                 }
+                this.dayEventsSections.value = []
                 this.dayEventsSections.value.append(contentsOf: sections)
                 if this.loadingViewControllerShowing {
                     this.dismiss(animated: true, completion: nil)
                     this.loadingViewControllerShowing = false
                 }
             case .loading:
-                this.present(this.loadingViewController, animated: true, completion: nil)
-                this.loadingViewControllerShowing = true
+                if !this.loadingViewControllerShowing {
+                    this.present(this.loadingViewController, animated: true, completion: nil)
+                    this.loadingViewControllerShowing = true
+                }
             default:
                 break
             }
@@ -80,10 +76,11 @@ final class DayEventsViewController: UITableViewController {
     }
     
     private func setupTableView() {
+        tableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: EventTableViewCell.identifier)
         tableView.dataSource = nil
         
         let dataSource = RxTableViewSectionedAnimatedDataSource<RxTableViewAnimatableTitledSection<MatchEvent>>(configureCell: { (dataSource, tableView, indexPath, item) in
-            let cell = tableView.dequeueReusableCell(withIdentifier: DayEventsTableViewCell.identifier, for: indexPath) as! DayEventsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier, for: indexPath) as! EventTableViewCell
             cell.homeTeamNameLabel.text = item.homeTeamName
             cell.awayTeamNameLabel.text = item.awayTeamName
             cell.homeTeamScoreLabel.text = item.homeScore
@@ -92,7 +89,11 @@ final class DayEventsViewController: UITableViewController {
         })
         
         dataSource.titleForHeaderInSection = { [weak self] (dataSource, section) in
-            return self?.dayEventsSections.value[section].title ?? Placeholder.unknown
+            guard let this = self else { return Placeholder.unknown }
+            if this.dayEventsSections.value.count - 1 < section {
+                return Placeholder.unknown
+            }
+            return this.dayEventsSections.value[section].title
         }
         
         dayEventsSections.asObservable()

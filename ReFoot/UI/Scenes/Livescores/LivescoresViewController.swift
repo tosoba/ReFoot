@@ -2,8 +2,8 @@
 //  LivescoresViewController.swift
 //  ReFoot
 //
-//  Created by merengue on 22/09/2018.
-//  Copyright © 2018 merengue. All rights reserved.
+//  Created by merengue on 11/01/2019.
+//  Copyright © 2019 merengue. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ import RxSwift
 import ReRxSwift
 import RxDataSources
 
-final class LivescoresViewController: UIViewController {
+final class LivescoresViewController: UITableViewController {
     
     static let identifier = "LivescoresViewController"
     
@@ -26,68 +26,72 @@ final class LivescoresViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    private let tableViewSections = Variable<[RxTableViewAnimatableTitledSection<LiveMatchEvent>]>([])
+
     private lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading events")
     
     private var loadingViewControllerShowing: Bool = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupConnection()
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         connection.connect()
-    }
-    
-    override func didMove(toParent parent: UIViewController?) {
-        if parent == nil {
-            connection.disconnect()
-        }
+        setupConnection()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        connection.disconnect()
         loadingViewControllerShowing = false
+        tableViewSections.value = []
+        connection.disconnect()
     }
     
     private func setupConnection() {
-        connection.subscribe(\Props.allMatchEventsLoadable) { [weak self] loadable in
+        connection.subscribe(\Props.liveMatchEventsLoadable) { [weak self] (loadable) in
             guard let this = self else { return }
             switch loadable {
             case .value(let newEvents):
-                self?.hideLoadingViewControllerIfShowing()
+                let sections = Dictionary(grouping: newEvents.data, by: { $0.leagueName }).map { (leagueName, events) in
+                    RxTableViewAnimatableTitledSection<LiveMatchEvent>(title: leagueName, sectionItems: events)
+                }
+                this.tableViewSections.value.append(contentsOf: sections)
+                if this.loadingViewControllerShowing {
+                    this.dismiss(animated: true, completion: nil)
+                    this.loadingViewControllerShowing = false
+                }
             case .loading:
                 this.present(this.loadingViewController, animated: true, completion: nil)
                 this.loadingViewControllerShowing = true
-            case .error(let error):
-                break
-            default:
-                break
-            }
-        }
-        
-        connection.subscribe(\Props.liveEventsLoadable) { [weak self] loadable in
-            guard let this = self else { return }
-            switch loadable {
-            case .value(let newLiveEvents):
-                print(newLiveEvents.data.count)
-                self?.hideLoadingViewControllerIfShowing()
-            case .error(let error):
-                break
             default:
                 break
             }
         }
     }
     
-    private func hideLoadingViewControllerIfShowing() {
-        if loadingViewControllerShowing {
-            dismiss(animated: true, completion: nil)
-            loadingViewControllerShowing = false
+    private func setupTableView() {
+        tableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: EventTableViewCell.identifier)
+        tableView.dataSource = nil
+        
+        let dataSource = RxTableViewSectionedAnimatedDataSource<RxTableViewAnimatableTitledSection<LiveMatchEvent>>(configureCell: { (dataSource, tableView, indexPath, item) in
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.identifier, for: indexPath) as! EventTableViewCell
+            cell.homeTeamNameLabel.text = item.homeTeamName
+            cell.awayTeamNameLabel.text = item.awayTeamName
+            cell.homeTeamScoreLabel.text = item.homeScore
+            cell.awayTeamScoreLabel.text = item.awayScore
+            return cell
+        })
+        
+        dataSource.titleForHeaderInSection = { [weak self] (dataSource, section) in
+            return self?.tableViewSections.value[section].title ?? Placeholder.unknown
         }
+        
+        tableViewSections.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
 }
 
@@ -99,17 +103,14 @@ extension LivescoresViewController: Connectable {
     typealias ActionsType = LivescoresViewController.Actions
     
     struct Props {
-        let liveEventsLoadable: Loadable<EquatableArray<LiveMatchEvent>>
-        let allMatchEventsLoadable: Loadable<EquatableArray<MatchEvent>>
+        let liveMatchEventsLoadable: Loadable<EquatableArray<LiveMatchEvent>>
     }
     
     struct Actions {}
 }
 
 private let mapStateToProps = { (appState: AppState) in
-    return LivescoresViewController.Props(
-        liveEventsLoadable: appState.livescoresState.livescores,
-        allMatchEventsLoadable: appState.dayEventsState.events[appState.scoresHostState.date.toStringYearMonthDay()] ?? .initial)
+    return LivescoresViewController.Props(liveMatchEventsLoadable: appState.livescoresState.livescores)
 }
 
 private let mapDispatchToActions = { (dispatch: @escaping DispatchFunction) in

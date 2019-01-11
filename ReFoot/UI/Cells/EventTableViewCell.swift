@@ -1,20 +1,18 @@
 //
-//  DayEventsTableViewCell.swift
+//  EventTableViewCell.swift
 //  ReFoot
 //
-//  Created by merengue on 06/10/2018.
-//  Copyright © 2018 merengue. All rights reserved.
+//  Created by merengue on 11/01/2019.
+//  Copyright © 2019 merengue. All rights reserved.
 //
 
 import UIKit
 
-final class DayEventsTableViewCell: UITableViewCell {
+class EventTableViewCell: UITableViewCell {
+    static let identifier = "eventTableViewCell"
     
-    static let identifier = "dayEventsTableViewCell"
-
     @IBOutlet weak var homeTeamNameLabel: UILabel!
     @IBOutlet weak var homeTeamScoreLabel: UILabel!
-    
     @IBOutlet weak var awayTeamNameLabel: UILabel!
     @IBOutlet weak var awayTeamScoreLabel: UILabel!
 }
