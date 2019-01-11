@@ -16,6 +16,7 @@ protocol RemoteFootballDataStore {
     func matchEvents(on date: Date) -> Observable<[MatchEvent]>
     func teams(in league: League) -> Observable<[Team]>
     func leagueTable(for league: League) -> Observable<[LeagueTableTeam]>
+    var liveMatchEvents: Observable<[LiveMatchEvent]> { get }
 }
 
 final class RemoteFootballDataStoreImpl : RemoteFootballDataStore {
@@ -23,6 +24,13 @@ final class RemoteFootballDataStoreImpl : RemoteFootballDataStore {
     var leagues: Observable<[League]> {
         return callEndpoint(identifiedBy: URLFor.allLeagues)
             .mapResultToArrayOfImmutables(usingDataFromJSONPropertyCalled: "countrys")
+    }
+    
+    var liveMatchEvents: Observable<[LiveMatchEvent]> {
+        return callEndpoint(identifiedBy: URLFor.liveMatchEvents).map {
+            let json = $0 as! [String : Any]
+            return json["teams"] as! [String: Any]
+        }.mapResultToArrayOfImmutables(usingDataFromJSONPropertyCalled: "Match")
     }
     
     func matchEvents(on date: Date) -> Observable<[MatchEvent]> {
@@ -49,6 +57,8 @@ struct URLFor {
     private static let base = "https://www.thesportsdb.com/api/v1/json/1/"
     
     static let allLeagues = URL(string: "\(base)search_all_leagues.php?s=Soccer")!
+    
+    static let liveMatchEvents = URL(string: "\(base)latestsoccer.php")!
     
     static func matchEvents(on dateStr: String) -> URL {
         return URL(string: "\(base)eventsday.php?d=\(dateStr)&s=Soccer")!

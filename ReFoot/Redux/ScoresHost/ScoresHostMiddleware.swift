@@ -14,7 +14,7 @@ var scoresHostMiddleware: SimpleMiddleware<AppState> {
     }
 }
 
-func handleScoresHostAction(_ action: Action, in context: MiddlewareContext<AppState>) -> Action? {
+private func handleScoresHostAction(_ action: Action, in context: MiddlewareContext<AppState>) -> Action? {
     guard let scoresHostAction = action as? ScoresHostAction, case .set(let date) = scoresHostAction else { return action }
     context.dispatch(DayEventsAction.fetch(date))
     return action

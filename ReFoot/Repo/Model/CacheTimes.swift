@@ -10,14 +10,15 @@ import RealmSwift
 
 final class CacheTimes: Object {
     @objc dynamic var leaguesList: Double = 0.0
+    @objc dynamic var liveMatchEvents: Double = 0.0
 }
-
-private let dayInMillis: Double = 86400000.0
 
 func cacheLimit(forObjectOfType type: Object.Type) -> Double {
     switch type {
     case _ as PersistableLeague.Type:
-        return dayInMillis
+        return 86400000.0 // 1 day
+    case _ as PersistableLiveMatchEvent.Type:
+        return 120000.0 // 2 minutes
     default:
         return Double.greatestFiniteMagnitude
     }

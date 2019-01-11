@@ -36,8 +36,8 @@ struct MatchEvent: ImmutableMappable {
         homeTeamName = (try? map.value("strHomeTeam")) ?? Placeholder.unknown
         awayTeamName = (try? map.value("strAwayTeam")) ?? Placeholder.unknown
         round = (try? map.value("intRound")) ?? Placeholder.unknown
-        homeScore = (try? map.value("intHomeScore")) ?? Placeholder.unknownScore
-        awayScore =  (try? map.value("intAwayScore")) ?? Placeholder.unknownScore
+        homeScore = (try? map.value("intHomeScore")) ?? Placeholder.unknownNumberStr
+        awayScore =  (try? map.value("intAwayScore")) ?? Placeholder.unknownNumberStr
         date = (try? map.value("dateEvent")) ?? Placeholder.unknown
         time = (try? map.value("strTime")) ?? Placeholder.unknown
         homeTeamId = (try? map.value("idHomeTeam")) ?? Placeholder.nullId

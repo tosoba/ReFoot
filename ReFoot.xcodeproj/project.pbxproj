@@ -37,6 +37,8 @@
 		335482D52168AF5D007DFE45 /* DayEventsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335482D42168AF5D007DFE45 /* DayEventsAction.swift */; };
 		335482D72168B021007DFE45 /* DayEventsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335482D62168B021007DFE45 /* DayEventsState.swift */; };
 		335482D92168B3C7007DFE45 /* DayEventsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335482D82168B3C7007DFE45 /* DayEventsReducer.swift */; };
+		335C6BD621E8A0FA00E8C272 /* LiveMatchEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335C6BD521E8A0FA00E8C272 /* LiveMatchEvent.swift */; };
+		335C6BD821E8B1CD00E8C272 /* RealmExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335C6BD721E8B1CD00E8C272 /* RealmExt.swift */; };
 		3367A70C21567A84001A259F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367A70B21567A84001A259F /* AppDelegate.swift */; };
 		3367A71121567A84001A259F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367A70F21567A84001A259F /* Main.storyboard */; };
 		3367A71321567A84001A259F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367A71221567A84001A259F /* Assets.xcassets */; };
@@ -117,6 +119,8 @@
 		335482D42168AF5D007DFE45 /* DayEventsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsAction.swift; sourceTree = "<group>"; };
 		335482D62168B021007DFE45 /* DayEventsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsState.swift; sourceTree = "<group>"; };
 		335482D82168B3C7007DFE45 /* DayEventsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsReducer.swift; sourceTree = "<group>"; };
+		335C6BD521E8A0FA00E8C272 /* LiveMatchEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchEvent.swift; sourceTree = "<group>"; };
+		335C6BD721E8B1CD00E8C272 /* RealmExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExt.swift; sourceTree = "<group>"; };
 		3367A70821567A83001A259F /* ReFoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReFoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3367A70B21567A84001A259F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3367A71021567A84001A259F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				334F2E10217B4F55000689F1 /* ObservableExt.swift */,
+				335C6BD721E8B1CD00E8C272 /* RealmExt.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 				335482CF2168A2E4007DFE45 /* MatchEvent.swift */,
 				33313FD9216A095700D5B5E2 /* Team.swift */,
 				334F2E0D217B3B37000689F1 /* LeagueTableTeam.swift */,
+				335C6BD521E8A0FA00E8C272 /* LiveMatchEvent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -735,6 +741,7 @@
 				333AFC54216A1BB7002DB76F /* DateExt.swift in Sources */,
 				337B4D022157BA44006A2665 /* Loadable.swift in Sources */,
 				334F2E0E217B3B37000689F1 /* LeagueTableTeam.swift in Sources */,
+				335C6BD821E8B1CD00E8C272 /* RealmExt.swift in Sources */,
 				335482D02168A2E4007DFE45 /* MatchEvent.swift in Sources */,
 				337B4D002157B98C006A2665 /* Middleware.swift in Sources */,
 				339D8B732157A9D200569BC0 /* RemoteFootballDataStore.swift in Sources */,
@@ -752,6 +759,7 @@
 				337850202168C30700FF53F5 /* ScoresHostMiddleware.swift in Sources */,
 				33215AAF2172029E0016FEFC /* ImageViewExt.swift in Sources */,
 				335482D92168B3C7007DFE45 /* DayEventsReducer.swift in Sources */,
+				335C6BD621E8A0FA00E8C272 /* LiveMatchEvent.swift in Sources */,
 				337B4D152157E06D006A2665 /* LeaguesReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
