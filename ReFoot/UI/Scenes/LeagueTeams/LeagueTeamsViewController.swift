@@ -13,7 +13,7 @@ import ReRxSwift
 import RxDataSources
 import FoldingCell
 
-final class LeagueTeamsViewController: UITableViewController {
+final class LeagueTeamsViewController: UITableViewController, ShowsLoadingAlert {
     
     static let identifier = "LeagueTeamsViewController"
     
@@ -25,9 +25,9 @@ final class LeagueTeamsViewController: UITableViewController {
         mapDispatchToActions: mapDispatchToActions
     )
     
-    private lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading teams")
+    lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading teams")
     
-    private var loadingViewControllerShowing: Bool = false
+    var loadingViewControllerShowing: Bool = false
     
     private let disposeBag = DisposeBag()
     
@@ -54,8 +54,8 @@ final class LeagueTeamsViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        dismissLoadingAlertIfNotAlreadyDismissed()
         connection.disconnect()
-        loadingViewControllerShowing = false
     }
     
     private func setupTableView() {
@@ -84,13 +84,9 @@ final class LeagueTeamsViewController: UITableViewController {
             case .value(let teams):
                 this.teamSections.value[0].sectionItems.append(contentsOf: teams.data)
                 this.cellHeights = Array(repeating: CellHeight.closed, count: this.teamSections.value[0].sectionItems.count)
-                if this.loadingViewControllerShowing {
-                    this.dismiss(animated: true, completion: nil)
-                    this.loadingViewControllerShowing = false
-                }
+                this.dismissLoadingAlertIfNotAlreadyDismissed()
             case .loading:
-                this.present(this.loadingViewController, animated: true, completion: nil)
-                this.loadingViewControllerShowing = true
+                this.showLoadingAlertIfNotShowing()
             default:
                 break
             }

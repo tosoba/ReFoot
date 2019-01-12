@@ -12,7 +12,7 @@ import RxSwift
 import ReRxSwift
 import RxDataSources
 
-final class DayEventsViewController: UITableViewController {
+final class DayEventsViewController: UITableViewController, ShowsLoadingAlert {
     
     static let identifier = "DayEventsViewController"
     
@@ -28,9 +28,9 @@ final class DayEventsViewController: UITableViewController {
     
     private let dayEventsSections = Variable<[RxTableViewAnimatableTitledSection<MatchEvent>]>([])
     
-    private lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading events")
+    lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading events")
     
-    private var loadingViewControllerShowing: Bool = false
+    var loadingViewControllerShowing: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ final class DayEventsViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        loadingViewControllerShowing = false
+        dismissLoadingAlertIfNotAlreadyDismissed()
         dayEventsSections.value = []
         connection.disconnect()
     }
@@ -60,15 +60,9 @@ final class DayEventsViewController: UITableViewController {
                 }
                 this.dayEventsSections.value = []
                 this.dayEventsSections.value.append(contentsOf: sections)
-                if this.loadingViewControllerShowing {
-                    this.dismiss(animated: true, completion: nil)
-                    this.loadingViewControllerShowing = false
-                }
+                this.dismissLoadingAlertIfNotAlreadyDismissed()
             case .loading:
-                if !this.loadingViewControllerShowing {
-                    this.present(this.loadingViewController, animated: true, completion: nil)
-                    this.loadingViewControllerShowing = true
-                }
+                this.showLoadingAlertIfNotShowing()
             default:
                 break
             }

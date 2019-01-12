@@ -77,6 +77,7 @@
 		33AD3183215FB77C00E2A0A9 /* SegueIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD3182215FB77C00E2A0A9 /* SegueIdentifiers.swift */; };
 		33B76C9D215FD577008A1026 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B76C9C215FD577008A1026 /* Persistable.swift */; };
 		33B76C9F215FDA3E008A1026 /* CacheTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B76C9E215FDA3E008A1026 /* CacheTimes.swift */; };
+		33C1234621E9E91200DFD381 /* ShowsLoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C1234521E9E91200DFD381 /* ShowsLoadingAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		33AD3182215FB77C00E2A0A9 /* SegueIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifiers.swift; sourceTree = "<group>"; };
 		33B76C9C215FD577008A1026 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		33B76C9E215FDA3E008A1026 /* CacheTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimes.swift; sourceTree = "<group>"; };
+		33C1234521E9E91200DFD381 /* ShowsLoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsLoadingAlert.swift; sourceTree = "<group>"; };
 		372AE8403D17305C7433EFC7 /* Pods_ReFoot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReFoot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		905DA826E8A734ABE8509825 /* Pods-ReFoot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReFoot.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot.release.xcconfig"; sourceTree = "<group>"; };
 		D811E2DF8EA4892ABB9DF217 /* Pods-ReFoot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReFoot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReFoot/Pods-ReFoot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				333AFC4F216A1BB7002DB76F /* UIViewControllerExt.swift */,
 				33215AAC2171F5F00016FEFC /* RxTableViewAnimatableTitledSection.swift */,
 				33215AAE2172029E0016FEFC /* ImageViewExt.swift */,
+				33C1234521E9E91200DFD381 /* ShowsLoadingAlert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				3335D2B52156BA8F00BC7D26 /* LeagueHostViewController.swift in Sources */,
 				335482D72168B021007DFE45 /* DayEventsState.swift in Sources */,
 				334F2E11217B4F55000689F1 /* ObservableExt.swift in Sources */,
+				33C1234621E9E91200DFD381 /* ShowsLoadingAlert.swift in Sources */,
 				3367A70C21567A84001A259F /* AppDelegate.swift in Sources */,
 				338A4049215F91F4003F7466 /* LoadingStatus.swift in Sources */,
 				335482D52168AF5D007DFE45 /* DayEventsAction.swift in Sources */,

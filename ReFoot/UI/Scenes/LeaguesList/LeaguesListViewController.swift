@@ -12,7 +12,7 @@ import RxSwift
 import ReRxSwift
 import RxDataSources
 
-final class LeaguesListViewController: UITableViewController {
+final class LeaguesListViewController: UITableViewController, ShowsLoadingAlert {
     
     var store: Store<AppState>!
     
@@ -26,9 +26,9 @@ final class LeaguesListViewController: UITableViewController {
         mapDispatchToActions: mapDispatchToActions
     )
     
-    private lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading leagues")
+    lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading leagues")
     
-    private var loadingViewControllerShowing: Bool = false
+    var loadingViewControllerShowing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,7 @@ final class LeaguesListViewController: UITableViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        dismissLoadingAlertIfNotAlreadyDismissed()
         connection.disconnect()
     }
     
@@ -59,13 +60,9 @@ final class LeaguesListViewController: UITableViewController {
             switch loadable {
             case .value(let newLeagues):
                 this.leagueSections.value[0].sectionItems.append(contentsOf: newLeagues.data)
-                if this.loadingViewControllerShowing {
-                    this.dismiss(animated: true, completion: nil)
-                    this.loadingViewControllerShowing = false
-                }
+                this.dismissLoadingAlertIfNotAlreadyDismissed()
             case .loading:
-                this.present(this.loadingViewController, animated: true, completion: nil)
-                this.loadingViewControllerShowing = true
+                this.showLoadingAlertIfNotShowing()
             default:
                 break
             }

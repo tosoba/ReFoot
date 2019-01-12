@@ -12,8 +12,8 @@ import RxSwift
 import ReRxSwift
 import RxDataSources
 
-final class LivescoresViewController: UITableViewController {
-    
+final class LivescoresViewController: UITableViewController, ShowsLoadingAlert {
+
     static let identifier = "LivescoresViewController"
     
     var store: Store<AppState>!
@@ -28,9 +28,9 @@ final class LivescoresViewController: UITableViewController {
     
     private let tableViewSections = Variable<[RxTableViewAnimatableTitledSection<LiveMatchEvent>]>([])
 
-    private lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading events")
+    lazy var loadingViewController: UIAlertController = self.loadingViewController(withTitle: "Loading events")
     
-    private var loadingViewControllerShowing: Bool = false
+    var loadingViewControllerShowing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ final class LivescoresViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        loadingViewControllerShowing = false
+        dismissLoadingAlertIfNotAlreadyDismissed()
         tableViewSections.value = []
         connection.disconnect()
     }
@@ -59,13 +59,9 @@ final class LivescoresViewController: UITableViewController {
                     RxTableViewAnimatableTitledSection<LiveMatchEvent>(title: leagueName, sectionItems: events)
                 }
                 this.tableViewSections.value.append(contentsOf: sections)
-                if this.loadingViewControllerShowing {
-                    this.dismiss(animated: true, completion: nil)
-                    this.loadingViewControllerShowing = false
-                }
+                this.dismissLoadingAlertIfNotAlreadyDismissed()
             case .loading:
-                this.present(this.loadingViewController, animated: true, completion: nil)
-                this.loadingViewControllerShowing = true
+                this.showLoadingAlertIfNotShowing()
             default:
                 break
             }
